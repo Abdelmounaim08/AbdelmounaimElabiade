@@ -1,12 +1,21 @@
 import { CodeBracketSquareIcon, CommandLineIcon, RocketLaunchIcon } from '@heroicons/react/16/solid'
+import { motion } from 'framer-motion'
 import React from 'react'
 
 function Service() {
   return (
     <div className='bg-gradient-to-bl from-purple-900 via-slate-800 to-slate-900 pt-[2rem] md:pt-[4rem] pb-[5rem]' id='service'>
-    <p className='heading'>My
+    {/* <p className='heading'>My
       <span className='text-yellow-400'>Services</span>
-    </p>
+    </p> */}
+     <motion.h1
+            className="text-center text-3xl md:text-4xl lg:text-5xl font-bold text-white"
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            My <span className="text-yellow-400">Services</span>
+          </motion.h1>
     <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-[80%] mx-auto items-center gap-[3rem] mt-[4rem] text-white h-full'>
       
       {/* Frontend Card */}
