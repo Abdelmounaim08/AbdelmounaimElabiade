@@ -1,6 +1,6 @@
 import { Bars2Icon } from "@heroicons/react/16/solid";
 import Link from "next/link";
-import React, { useState } from "react";
+import React from "react";
 interface Props{
     operNav:() => void;
 }

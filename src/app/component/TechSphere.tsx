@@ -79,9 +79,11 @@ const ExperiencesComponent: React.FC = () => {
   const [selectedExp, setSelectedExp] = useState<number>(0);
   const [isVisible, setIsVisible] = useState(false);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const sceneRef = useRef<THREE.Scene>();
-  const rendererRef = useRef<THREE.WebGLRenderer>();
-  const particlesRef = useRef<THREE.Points>();
+  
+  // Correction: Utiliser null comme valeur initiale pour les refs Three.js
+  const sceneRef = useRef<THREE.Scene | null>(null);
+  const rendererRef = useRef<THREE.WebGLRenderer | null>(null);
+  const particlesRef = useRef<THREE.Points | null>(null);
 
   useEffect(() => {
     setIsVisible(true);

@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-no-undef */
 import { StarIcon } from '@heroicons/react/16/solid';
 import React from 'react'
 import Image from 'next/image';

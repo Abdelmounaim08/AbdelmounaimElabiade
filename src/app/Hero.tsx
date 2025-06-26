@@ -1,6 +1,5 @@
-/* eslint-disable react/jsx-no-undef */
-/* eslint-disable jsx-a11y/alt-text */
-import React, { useState } from 'react'
+
+import React from 'react'
 import Particle from './component/Particle'
 import { ExampleComponent } from './component/TextEffect'
 import Image from 'next/image'

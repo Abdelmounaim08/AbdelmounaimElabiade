@@ -1,16 +1,13 @@
-import { ArrowDownTrayIcon } from '@heroicons/react/16/solid'
-import React from 'react'
 import Image from 'next/image'
-import Ballcanvas from './3dmodal'
 
 //bg-[#121130]
 const About = () => {
-  const handleDownload = () => {
-    const link = document.createElement('a');
-    link.href = 'https://drive.google.com/file/d/1NcvDNW0rrmRtyHJXWDaCrBxJkQrEzZjA/view';
-    link.download = 'ElabiadeCv.pdf';
-    link.click();
-  };
+  // const handleDownload = () => {
+  //   const link = document.createElement('a');
+  //   link.href = 'https://drive.google.com/file/d/1NcvDNW0rrmRtyHJXWDaCrBxJkQrEzZjA/view';
+  //   link.download = 'ElabiadeCv.pdf';
+  //   link.click();
+  // };
 
   return (
     <div className='pb-[3rem] bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 pt-[4rem] md:pt-[8rem]' id='ABOUT'>

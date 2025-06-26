@@ -1,5 +1,5 @@
 'use client'
-import Image from "next/image";
+// import Image from "next/image";
 import Nav from "./component/Nav";
 import MobileNav from "./component/MobileNav";
 import { useEffect, useState } from "react";

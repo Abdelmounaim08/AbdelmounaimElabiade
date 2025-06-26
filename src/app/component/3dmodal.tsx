@@ -24,7 +24,7 @@ const Ball= ({imageUrl}:{imageUrl:string}) => {
       </Float>
   )
 }
-const Ballcanvas= ({icon}:{icon:any})=>{
+const Ballcanvas= ({icon}:{icon:string})=>{
 return(
 <Canvas frameloop="demand" dpr={[1, 2]} gl={{ preserveDrawingBuffer: true }}>
   <Suspense fallback={<CanvasLoader />}>

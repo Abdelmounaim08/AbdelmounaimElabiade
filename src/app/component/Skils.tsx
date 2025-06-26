@@ -1,6 +1,6 @@
 import React from 'react'
 import SklisItems from './SklisItems'
-import SkilsLangaue from './SkilsLangaue'
+// import SkilsLangaue from './SkilsLangaue'
 import { motion } from 'framer-motion';
 import TechSphere from './TechSphere';
 function Skils() {

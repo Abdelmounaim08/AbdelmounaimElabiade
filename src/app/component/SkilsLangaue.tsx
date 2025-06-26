@@ -14,6 +14,7 @@ interface SkilsLangueProps {
 const SkilsLangue: React.FC<SkilsLangueProps> = ({ skill1, skill2, skill3, level1, level2, level3 }) => {
   const [rotate, setRotate] = useState(false);
   const [animated, setAnimated] = useState(false);
+  console.log(animated);
   
   useEffect(() => {
     setAnimated(true);
