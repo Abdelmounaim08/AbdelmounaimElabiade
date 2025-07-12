@@ -58,7 +58,7 @@ const Nav = () => {
           <div className="flex flex-col space-y-6 p-6 text-base font-medium">
             <Link href="#home" onClick={toggleNav} className="hover:text-yellow-300">Accueil</Link>
             <Link href="#service" onClick={toggleNav} className="hover:text-yellow-300">Services</Link>
-            <Link href="#ABOUT" onClick={toggleNav} className="hover:text-yellow-300">À propos</Link>
+            {/* <Link href="#ABOUT" onClick={toggleNav} className="hover:text-yellow-300">À propos</Link> */}
             <Link href="#EXPERIENCES" onClick={toggleNav} className="hover:text-yellow-300">Expériences</Link>
             <Link href="#PROJECT" onClick={toggleNav} className="hover:text-yellow-300">Projets</Link>
             <Link href="#CONTACT" onClick={toggleNav} className="hover:text-yellow-300">Contact</Link>
