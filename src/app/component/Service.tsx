@@ -1,84 +1,103 @@
-import { CodeBracketSquareIcon, CommandLineIcon, RocketLaunchIcon } from '@heroicons/react/16/solid'
-import { motion } from 'framer-motion'
-import React from 'react'
+"use client";
 
-function Service() {
+import {
+  CodeBracketSquareIcon,
+  CommandLineIcon,
+  RocketLaunchIcon,
+} from "@heroicons/react/16/solid";
+import { motion } from "framer-motion";
+import React from "react";
+
+const services = [
+  {
+    title: "Frontend",
+    description:
+      "I'm an experienced Front-end developer specializing in creating attractive and interactive user interfaces. I use modern technologies like React.js, Next.js and prioritize accessibility, performance and clean UI/UX.",
+    icon: CodeBracketSquareIcon,
+    color: "text-cyan-400",
+    border: "hover:border-cyan-400/50 hover:shadow-cyan-400/20",
+    text: "text-cyan-300",
+    delay: 0.1,
+  },
+  {
+    title: "Backend",
+    description:
+      "As a skilled Back-end developer, I build robust APIs using Node.js and PHP (Laravel). I focus on clean architecture, secure systems and efficient database design for high performance apps.",
+    icon: RocketLaunchIcon,
+    color: "text-purple-400",
+    border: "hover:border-purple-400/50 hover:shadow-purple-400/20",
+    text: "text-purple-300",
+    delay: 0.2,
+  },
+  {
+    title: "Fullstack",
+    description:
+      "I'm a versatile Full-stack developer capable of managing both frontend and backend. I ensure smooth integrations between the client and server, delivering complete, scalable solutions.",
+    icon: CommandLineIcon,
+    color: "text-indigo-400",
+    border: "hover:border-indigo-400/50 hover:shadow-indigo-400/20",
+    text: "text-indigo-300",
+    delay: 0.3,
+  },
+];
+
+const cardVariant = {
+  hidden: { opacity: 0, y: 30 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: i * 0.2,
+      duration: 0.5,
+      type: "spring",
+      stiffness: 80,
+    },
+  }),
+};
+
+export default function Service() {
   return (
-    <div className='bg-gradient-to-bl from-purple-900 via-slate-800 to-slate-900 pt-[2rem] md:pt-[4rem] pb-[5rem]' id='service'>
-    {/* <p className='heading'>My
-      <span className='text-yellow-400'>Services</span>
-    </p> */}
-     <motion.h1
-            className="text-center text-3xl md:text-4xl lg:text-5xl font-bold text-white"
-            initial={{ opacity: 0, y: -20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            My <span className="text-yellow-400">Services</span>
-          </motion.h1>
-    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-[80%] mx-auto items-center gap-[3rem] mt-[4rem] text-white h-full'>
-      
-      {/* Frontend Card */}
-      <div 
-        data-aos="fade-right" 
-        className='bg-gradient-to-br from-slate-800/80 via-purple-800/60 to-slate-700/80 
-                   hover:scale-110 transform-all duration-300 hover:-rotate-6 
-                   uppercase font-semibold text-center p-[2rem] h-full
-                   border border-purple-500/30 backdrop-blur-sm
-                   hover:border-cyan-400/50 hover:shadow-lg hover:shadow-cyan-400/20'
+    <section
+      id="service"
+      className="bg-gradient-to-bl from-purple-900 via-slate-800 to-slate-900 py-20 px-4"
+    >
+      <motion.h2
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+        className="text-center text-4xl md:text-5xl font-bold text-white"
       >
-        <CodeBracketSquareIcon className='w-[6rem] h-[6rem] mx-auto text-cyan-400'/>
-        <h1 className='text-[20px] md:text-[30px] mt-[1.5rem] mb-[1.5rem] text-cyan-300'>frontend</h1>
-        <p className='text-[15px] text-slate-300'>
-        I&apos;m an experienced Front-end developer specializing in creating 
-        
-          attractive and interactive user interfaces. Using the latest technologies like HTML5, CSS3,
-          and JavaScript, I excel in frameworks such as React.js and Next JS. My focus is on delivering smooth and intuitive user experiences,
-          prioritizing performance, accessibility, and cross-platform compatibility.
-        </p>
-      </div>
-  
-      {/* Backend Card */}
-      <div 
-        data-aos="fade-up" 
-        className='bg-gradient-to-br from-purple-800/80 via-indigo-800/60 to-slate-800/80
-                   hover:scale-110 transform-all duration-300
-                   uppercase font-semibold text-center p-[2rem] h-full
-                   border border-indigo-500/30 backdrop-blur-sm
-                   hover:border-purple-400/50 hover:shadow-lg hover:shadow-purple-400/20'
-      >
-        <RocketLaunchIcon className='w-[6rem] h-[6rem] mx-auto text-purple-400'/>
-        <h1 className='text-[20px] md:text-[30px] mt-[1.5rem] mb-[1.5rem] text-purple-300'>Backend</h1>
-        <p className='text-[15px] text-slate-300'>
-          As a skilled Back-end developer, I build robust services and APIs
-          to power web applications. Proficient in languages like PHP, JavaScript, and Node.js, I&apos;m well-versed
-          in popular frameworks such as Laravel, Express. My expertise lies in designing databases and implementing complex business logic,
-          ensuring high-performing and secure Back-end solutions.
-        </p>
-      </div>
-  
-      {/* Fullstack Card */}
-      <div 
-        data-aos="fade-left" 
-        className='bg-gradient-to-br from-indigo-800/80 via-slate-800/60 to-purple-800/80
-                   hover:scale-110 transform-all duration-300 hover:rotate-6
-                   uppercase font-semibold text-center p-[2rem] h-full
-                   border border-slate-500/30 backdrop-blur-sm
-                   hover:border-indigo-400/50 hover:shadow-lg hover:shadow-indigo-400/20'
-      >
-        <CommandLineIcon className='w-[6rem] h-[6rem] mx-auto text-indigo-400'/>
-        <h1 className='text-[20px] md:text-[30px] mt-[1.5rem] mb-[1.5rem] text-indigo-300'>fullstack</h1>
-        <p className='text-[15px] text-slate-300'>
-        I&apos;m a versatile Full-stack developer with the ability to handle both Front-end and Back-end development.
-          I can design appealing user interfaces while implementing server-side logic.
-          With in-depth knowledge of Front-end technologies like HTML, CSS, and JavaScript,
-          coupled with Back-end skills in Python, PHP, and Node.js,
-          I create comprehensive and integrated web applications, delivering a seamless user experience
-        </p>
-      </div>
-    </div>
-  </div>
-  )
-}
+        My <span className="text-yellow-400">Services</span>
+      </motion.h2>
 
-export default Service
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-[90%] max-w-7xl mx-auto mt-16">
+        {services.map((service, i) => (
+          <motion.div
+            key={service.title}
+            className={`group rounded-2xl p-6 text-white text-center 
+              bg-gradient-to-br from-slate-800/70 via-slate-700/70 to-slate-800/70 
+              border border-slate-600/30 backdrop-blur-md hover:scale-[1.03] 
+              hover:rotate-1 transition-all duration-300 cursor-default
+              ${service.border}`}
+            custom={i}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            // variants={cardVariant}
+          >
+            <service.icon
+              className={`w-16 h-16 mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 ${service.color}`}
+            />
+            <h3 className={`text-2xl font-semibold mb-4 uppercase ${service.text}`}>
+              {service.title}
+            </h3>
+            <p className="text-sm leading-relaxed text-slate-300">
+              {service.description}
+            </p>
+          </motion.div>
+        ))}
+      </div>
+    </section>
+  );
+}

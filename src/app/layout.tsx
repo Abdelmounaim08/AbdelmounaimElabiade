@@ -7,6 +7,9 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Abdelmounaim Elabiade",
   description: "developer web full stack Abdelmounaim Elabiade from meknes morocco Dima CODM",
+   icons: {
+    icon: "image/download.svg", // ou "/mon-icon.png"
+  },
 };
 
 export default function RootLayout({

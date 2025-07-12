@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 300" width="100" height="60">
+  <!-- Fond du navigateur -->
+  <rect x="50" y="50" rx="20" ry="20" width="400" height="200" fill="#0f172a" stroke="#9333ea" stroke-width="6"></rect>
+  
+  <!-- Boutons à gauche -->
+  <circle cx="75" cy="75" r="6" fill="#facc15"></circle>
+  <circle cx="95" cy="75" r="6" fill="#facc15"></circle>
+  <circle cx="115" cy="75" r="6" fill="#facc15"></circle>
+
+  <!-- </> balise -->
+  <text x="60" y="190" font-family="monospace" font-size="50" fill="#facc15">&lt;/&gt;</text>
+
+  <!-- Lettre A -->
+  <text x="150" y="200" font-family="Arial Black, sans-serif" font-size="120" fill="#facc15">A</text>
+
+  <!-- Lettre E -->
+  <text x="230" y="200" font-family="Arial Black, sans-serif" font-size="120" fill="#22d3ee">E</text>
+
+  <!-- Chaînon (lien) stylisé -->
+  <path d="M320,170 a20,20 0 1,1 28,28 l-20,20 a20,20 0 1,1 -28,-28" stroke="#22d3ee" stroke-width="12" fill="none" stroke-linecap="round"></path>
+</svg>

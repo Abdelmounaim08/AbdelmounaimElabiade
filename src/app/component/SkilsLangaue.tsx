@@ -245,77 +245,104 @@ const SkilsLangue: React.FC<SkilsLangueProps> = ({ skill1, skill2, skill3, level
   }
 };
   return (
-    <div className="relative w-full h-96 my-12">
-      {/* Globe 3D */}
-      <motion.div
-  animate={{ overscrollBehaviorInline: 'contain',  }}
-  transition={{ repeat: Infinity, duration: 20, ease: 'linear' }}
-  className="relative w-64 h-64 rounded-full border border-gray-300 flex items-center justify-center"
->
-        {/* Lines on the globe */}
-        <div className="absolute w-full h-full rounded-full border-t-2 border-b-2 border-blue-400 opacity-20"></div>
-        <div className="absolute w-full h-full rounded-full border-t-2 border-b-2 border-blue-400 opacity-20" style={{ transform: 'rotateZ(30deg)' }}></div>
-        <div className="absolute w-full h-full rounded-full border-t-2 border-b-2 border-blue-400 opacity-20" style={{ transform: 'rotateZ(60deg)' }}></div>
-        <div className="absolute w-full h-full rounded-full border-l-2 border-r-2 border-blue-400 opacity-20"></div>
-        <div className="absolute w-full h-full rounded-full border-l-2 border-r-2 border-blue-400 opacity-20" style={{ transform: 'rotateX(60deg)' }}></div>
-        
-        {/* Web development core text */}
-        <div className="text-white font-bold text-center">
-          <p className="text-sm opacity-80">WEB</p>
-          <p className="text-xl">DEV</p>
-          <p className="text-sm opacity-80">SKILLS</p>
-        </div>
-      </motion.div>
-      
-      {/* Orbit skills */}
-      {skillsData.map((skill, index) => (
-  <motion.div
-    key={index}
-    className="absolute flex flex-col items-center"
-    style={{ transform: `translate(${skill.position.x}px, ${skill.position.y}px)` }}
-    initial={{ opacity: 0, scale: 0 }}
-    animate={{ opacity: 1, scale: 1 }}
-    transition={{ duration: 0.5, delay: index * 0.3 }}
-  >
-    <div style={{ color: skill.color }}>{renderIcon(skill.icon)}</div>
-    <span className="text-xs text-gray-600 mt-1">{skill.name}</span>
-    <span className="text-[10px] text-gray-400">{skill.level}</span>
-  </motion.div>
-))}
-
-      
-      {/* Small orbiting particles */}
-      {[...Array(12)].map((_, i) => {
-        const radius = Math.random() * 120 + 80;
-        const angle = (i / 12) * Math.PI * 2;
-        const x = Math.cos(angle) * radius;
-        const y = Math.sin(angle) * radius;
-        const size = Math.random() * 4 + 2;
-        
-        return (
-          <motion.div
-            key={`particle-${i}`}
-            className="absolute left-1/2 top-1/2 rounded-full bg-blue-400"
-            style={{ 
-              width: size, 
-              height: size,
-              x: x,
-              y: y
-            }}
-            animate={{
-              x: rotate ? [x, -y, -x, y, x] : x,
-              y: rotate ? [y, x, -y, -x, y] : y,
-              opacity: [0.2, 0.8, 0.2]
-            }}
-            transition={{
-              x: { duration: 10 + i, ease: "linear", repeat: Infinity },
-              y: { duration: 10 + i, ease: "linear", repeat: Infinity },
-              opacity: { duration: 3, repeat: Infinity, repeatType: "reverse" }
-            }}
-          />
-        );
-      })}
+   <section id="skills" className="relative py-20 bg-gray-950 text-white">
+  <div className="max-w-6xl mx-auto px-4">
+    {/* Title */}
+    <div className="text-center mb-12">
+      <h2 className="text-4xl font-bold mb-2">Mes Compétences</h2>
+      <p className="text-gray-400">Visualisation interactive et niveau de maîtrise</p>
     </div>
+
+    <div className="flex flex-col lg:flex-row items-center justify-center gap-16">
+      {/* Globe 3D */}
+      <div className="relative w-80 h-80 flex items-center justify-center">
+        <motion.div
+          animate={{ rotate: 360 }}
+          transition={{ repeat: Infinity, duration: 20, ease: 'linear' }}
+          className="relative w-64 h-64 rounded-full border border-gray-300 flex items-center justify-center"
+        >
+          {/* Lines */}
+          <div className="absolute w-full h-full rounded-full border-t-2 border-b-2 border-blue-400 opacity-20"></div>
+          <div className="absolute w-full h-full rounded-full border-t-2 border-b-2 border-blue-400 opacity-20 rotate-[30deg]"></div>
+          <div className="absolute w-full h-full rounded-full border-t-2 border-b-2 border-blue-400 opacity-20 rotate-[60deg]"></div>
+          <div className="absolute w-full h-full rounded-full border-l-2 border-r-2 border-blue-400 opacity-20"></div>
+          <div className="absolute w-full h-full rounded-full border-l-2 border-r-2 border-blue-400 opacity-20 rotate-x-60"></div>
+
+          {/* Text */}
+          <div className="text-white font-bold text-center z-10">
+            <p className="text-sm opacity-80">WEB</p>
+            <p className="text-xl">DEV</p>
+            <p className="text-sm opacity-80">SKILLS</p>
+          </div>
+        </motion.div>
+
+        {/* Orbiting skills */}
+        {skillsData.map((skill, index) => (
+          <motion.div
+            key={index}
+            className="absolute flex flex-col items-center"
+            style={{ transform: `translate(${skill.position.x}px, ${skill.position.y}px)` }}
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: index * 0.2 }}
+          >
+            <div style={{ color: skill.color }}>{renderIcon(skill.icon)}</div>
+            <span className="text-xs text-gray-300 mt-1">{skill.name}</span>
+            <span className="text-[10px] text-gray-400">{skill.level}</span>
+          </motion.div>
+        ))}
+
+        {/* Particles */}
+        {[...Array(12)].map((_, i) => {
+          const radius = Math.random() * 120 + 80;
+          const angle = (i / 12) * Math.PI * 2;
+          const x = Math.cos(angle) * radius;
+          const y = Math.sin(angle) * radius;
+          const size = Math.random() * 4 + 2;
+
+          return (
+            <motion.div
+              key={`particle-${i}`}
+              className="absolute left-1/2 top-1/2 rounded-full bg-blue-400"
+              style={{
+                width: size,
+                height: size,
+                x: x,
+                y: y
+              }}
+              animate={{
+                x: [x, -y, -x, y, x],
+                y: [y, x, -y, -x, y],
+                opacity: [0.2, 0.8, 0.2]
+              }}
+              transition={{
+                x: { duration: 10 + i, ease: "linear", repeat: Infinity },
+                y: { duration: 10 + i, ease: "linear", repeat: Infinity },
+                opacity: { duration: 3, repeat: Infinity, repeatType: "reverse" }
+              }}
+            />
+          );
+        })}
+      </div>
+
+      {/* Skills List */}
+      <div className="grid grid-cols-2 gap-6 max-w-md">
+        {skillsData.map((skill, idx) => (
+          <div key={idx} className="flex items-center gap-2">
+            <div className="text-xl" style={{ color: skill.color }}>
+              {renderIcon(skill.icon)}
+            </div>
+            <div>
+              <p className="text-sm font-semibold">{skill.name}</p>
+              <p className="text-xs text-gray-400">{skill.level}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
   );
 };
 

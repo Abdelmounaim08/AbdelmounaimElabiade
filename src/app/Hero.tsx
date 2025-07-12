@@ -55,14 +55,14 @@ export const Hero = () => {
     </div>
 
     {/* Image à la fin, bien alignée */}
-    <div className="flex justify-center lg:justify-end items-center mt-10 lg:mt-0">
+    <div className="flex justify-center lg:justify-end pr-6 items-center mt-10 lg:mt-0">
       <div className="w-64 h-64 md:w-80 md:h-80 relative rounded-full overflow-hidden border-4 border-white/20 shadow-xl">
         <Image
           src="/image/mounaim07.jpeg"
           alt="user"
           layout="fill"
           objectFit="cover"
-          className="rounded-full"
+          className="rounded-full bg-amber-50"
         />
       </div>
     </div>

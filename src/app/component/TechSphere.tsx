@@ -76,7 +76,7 @@ const experiences: Experience[] = [
 ];
 
 const ExperiencesComponent: React.FC = () => {
-  const [selectedExp, setSelectedExp] = useState<number>(0);
+  const [hoveredExp, setHoveredExp] = useState<number | null>(null);
   const [isVisible, setIsVisible] = useState(false);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   
@@ -193,9 +193,10 @@ const ExperiencesComponent: React.FC = () => {
               `}>
                 <div
                   className={`backdrop-blur-lg bg-white/5 border border-white/10 rounded-xl lg:rounded-2xl p-4 sm:p-5 lg:p-6 shadow-2xl hover:shadow-cyan-500/20 transition-all duration-500 cursor-pointer group ${
-                    selectedExp === index ? 'scale-102 md:scale-105 border-cyan-400/50 bg-white/10' : 'hover:scale-101 md:hover:scale-102'
+                    hoveredExp === index ? 'scale-102 md:scale-105 border-cyan-400/50 bg-white/10' : 'hover:scale-101 md:hover:scale-102'
                   } ${exp.isActive ? 'ring-1 lg:ring-2 ring-green-400/50' : ''}`}
-                  onClick={() => setSelectedExp(index)}
+                  onMouseEnter={() => setHoveredExp(index)}
+                  onMouseLeave={() => setHoveredExp(null)}
                 >
                   {/* Period */}
                   <div className="text-emerald-400 font-mono text-xs sm:text-sm mb-2 flex flex-wrap items-center gap-2">
@@ -220,7 +221,7 @@ const ExperiencesComponent: React.FC = () => {
                   
                   {/* Description */}
                   <div className={`space-y-2 transition-all duration-500 ${
-                    selectedExp === index ? 'max-h-96 opacity-100' : 'max-h-16 sm:max-h-20 opacity-70'
+                    hoveredExp === index ? 'max-h-96 opacity-100' : 'max-h-16 sm:max-h-20 opacity-70'
                   } overflow-hidden`}>
                     {exp.description.map((desc, i) => (
                       <div key={i} className="text-gray-300 text-xs sm:text-sm flex items-start gap-2">
@@ -232,7 +233,7 @@ const ExperiencesComponent: React.FC = () => {
                   
                   {/* Technologies */}
                   <div className={`mt-3 lg:mt-4 transition-all duration-500 ${
-                    selectedExp === index ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
+                    hoveredExp === index ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
                   }`}>
                     <div className="flex flex-wrap gap-1.5 sm:gap-2">
                       {exp.technologies.map((tech, i) => (

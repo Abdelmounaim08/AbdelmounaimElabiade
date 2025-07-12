@@ -1,30 +1,31 @@
-import { motion } from 'framer-motion'
-import React from 'react'
-interface Props{
-    title:string,
-    year:string,
-text:string,
+import { motion } from "framer-motion";
+
+interface Props {
+  title: string;
+  year: string;
+  text: string;
 }
 
-function SklisItems({title,year,text}:Props) {
+export default function SklisItems({ title, year, text }: Props) {
   return (
-    <motion.div 
-      className="mb-8 md:mb-16 h-full"
+    <motion.div
+      className="mb-10 md:mb-16 w-full"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
     >
-      <span className="px-6 text-emerald-400 py-2 font-bold text-lg border-2 border-emerald-400 inline-block">
+      <div className="inline-block border-2 border-emerald-400 text-emerald-400 px-5 py-1.5 font-semibold text-sm rounded-sm">
         {year}
-      </span>
-      <h3 className="mt-6 font-semibold uppercase mb-4 text-xl sm:text-2xl md:text-3xl text-white">
+      </div>
+
+      <h3 className="mt-5 text-white text-xl md:text-2xl lg:text-3xl font-bold uppercase tracking-wide">
         {title}
       </h3>
-      <p className="text-gray-400 font-normal text-base opacity-80">
+
+      <p className="mt-3 text-gray-400 text-base leading-relaxed opacity-90">
         {text}
       </p>
     </motion.div>
-  )
+  );
 }
-
-export default SklisItems

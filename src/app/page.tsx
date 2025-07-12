@@ -11,6 +11,7 @@ import Service from "./component/Service";
 import Skils from "./component/Skils";
 import Project from "./component/Project";
 import Footer from "./component/Footer";
+import ContactSection from "./component/ContactSection";
 
 const Home = () => {
   useEffect(() => {
@@ -36,11 +37,13 @@ const Home = () => {
 
         {/* Main content */}
         <div className="relative z-30">
-          <About />
+          {/* <About /> */}
           <Service />
           <Skils />
           <Project />
-          <Footer />
+          <ContactSection/>
+
+          {/* <Footer /> */}
         </div>
       </div>
     </div>

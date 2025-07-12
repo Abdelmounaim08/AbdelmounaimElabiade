@@ -1,6 +1,6 @@
 'use client';
 
-import { Bars2Icon, XMarkIcon } from "@heroicons/react/16/solid";
+import { Bars2Icon, XMarkIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
 import React, { useState } from "react";
 
@@ -11,60 +11,62 @@ const Nav = () => {
 
   return (
     <>
-      {/* Top navbar */}
-      <nav className="w-full fixed z-[10000] top-0 h-[12vh] bg-gradient-to-r from-slate-900/95 via-purple-900/95 to-slate-900/95 backdrop-blur-lg shadow-md">
-        <div className="flex justify-between items-center w-[90%] max-w-7xl mx-auto h-full">
-          <h1 className="text-xl md:text-2xl text-white font-bold cursor-pointer">
-            WEB<span className="text-yellow-300">DEV</span>
-          </h1>
+      {/* Top Navbar */}
+      <header className="bg-gradient-to-r from-slate-900/95 via-purple-900/95 to-slate-900/95 backdrop-blur-lg border-b border-purple-900/50 shadow-md fixed top-0 z-[10000] w-full">
+        <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between h-[12vh]">
+          {/* Logo SVG */}
+          <Link href="#home" className="flex items-center space-x-2">
+            <span className="block w-[80px] h-auto">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 500 300"
+                fill="none"
+              >
+                <rect x="50" y="50" rx="20" ry="20" width="400" height="200" fill="#0f172a" stroke="#9333ea" strokeWidth="6" />
+                <circle cx="75" cy="75" r="6" fill="#facc15" />
+                <circle cx="95" cy="75" r="6" fill="#facc15" />
+                <circle cx="115" cy="75" r="6" fill="#facc15" />
+                <text x="60" y="190" fontFamily="monospace" fontSize="50" fill="#facc15">&lt;/&gt;</text>
+                <text x="150" y="200" fontFamily="Arial Black, sans-serif" fontSize="120" fill="#facc15">A</text>
+                <text x="230" y="200" fontFamily="Arial Black, sans-serif" fontSize="120" fill="#22d3ee">E</text>
+                <path d="M320,170 a20,20 0 1,1 28,28 l-20,20 a20,20 0 1,1 -28,-28" 
+                  stroke="#22d3ee" strokeWidth="12" fill="none" strokeLinecap="round"/>
+              </svg>
+            </span>
+          </Link>
 
-          {/* Desktop nav links */}
-          <div className="hidden md:flex items-center space-x-8 text-white text-md font-medium">
-            <Link href="#home" className="hover:text-yellow-300 transition">HOME</Link>
-            <Link href="#service" className="hover:text-yellow-300 transition">SERVICES</Link>
-            <Link href="#ABOUT" className="hover:text-yellow-300 transition">ABOUT</Link>
-            <Link href="#EXPERIENCES" className="hover:text-yellow-300 transition">EXPERIENCES</Link>
-            <Link href="#PROJECT" className="hover:text-yellow-300 transition">PROJECT</Link>
-            <Link href="#CONTACT" className="hover:text-yellow-300 transition">CONTACT</Link>
-          </div>
+          {/* Desktop Links */}
+          <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
+            <Link href="#home" className="text-white hover:text-yellow-300 transition-colors">Accueil</Link>
+            <Link href="#service" className="text-white hover:text-yellow-300 transition-colors">Services</Link>
+            <Link href="#ABOUT" className="text-white hover:text-yellow-300 transition-colors">À propos</Link>
+            <Link href="#EXPERIENCES" className="text-white hover:text-yellow-300 transition-colors">Expériences</Link>
+            <Link href="#PROJECT" className="text-white hover:text-yellow-300 transition-colors">Projets</Link>
+            <Link href="#CONTACT" className="text-white hover:text-yellow-300 transition-colors">Contact</Link>
+          </nav>
 
-          {/* Hamburger icon (mobile) */}
-          <div className="md:hidden">
-            <Bars2Icon
-              onClick={toggleNav}
-              className="w-8 h-8 text-yellow-300 cursor-pointer"
-            />
-          </div>
+          {/* Mobile toggle */}
+          <button onClick={toggleNav} className="md:hidden text-yellow-300">
+            {isOpen ? <XMarkIcon className="w-7 h-7" /> : <Bars2Icon className="w-7 h-7" />}
+          </button>
         </div>
-      </nav>
+      </header>
 
       {/* Mobile Drawer */}
-      <div
-        className={`fixed top-0 right-0 h-full w-[75%] max-w-xs bg-slate-900 text-white z-[9999] shadow-lg transform transition-transform duration-300 ease-in-out ${
-          isOpen ? 'translate-x-0' : 'translate-x-full'
-        }`}
-      >
-        <div className="flex justify-between items-center p-5 border-b border-white/10">
-          <h2 className="text-lg font-bold">
-            MENU
-          </h2>
-          <XMarkIcon
-            onClick={toggleNav}
-            className="w-6 h-6 text-yellow-300 cursor-pointer"
-          />
+      {isOpen && (
+        <div className="fixed top-[12vh] right-0 h-[calc(100%-12vh)] w-[75%] max-w-xs bg-slate-900 text-white z-[9999] shadow-lg transform transition-transform duration-300 ease-in-out md:hidden">
+          <div className="flex flex-col space-y-6 p-6 text-base font-medium">
+            <Link href="#home" onClick={toggleNav} className="hover:text-yellow-300">Accueil</Link>
+            <Link href="#service" onClick={toggleNav} className="hover:text-yellow-300">Services</Link>
+            <Link href="#ABOUT" onClick={toggleNav} className="hover:text-yellow-300">À propos</Link>
+            <Link href="#EXPERIENCES" onClick={toggleNav} className="hover:text-yellow-300">Expériences</Link>
+            <Link href="#PROJECT" onClick={toggleNav} className="hover:text-yellow-300">Projets</Link>
+            <Link href="#CONTACT" onClick={toggleNav} className="hover:text-yellow-300">Contact</Link>
+          </div>
         </div>
+      )}
 
-        <div className="flex flex-col space-y-6 p-6 text-base font-medium">
-          <Link href="#home" onClick={toggleNav} className="hover:text-yellow-300">HOME</Link>
-          <Link href="#service" onClick={toggleNav} className="hover:text-yellow-300">SERVICES</Link>
-          <Link href="#ABOUT" onClick={toggleNav} className="hover:text-yellow-300">ABOUT</Link>
-          <Link href="#EXPERIENCES" onClick={toggleNav} className="hover:text-yellow-300">EXPERIENCES</Link>
-          <Link href="#PROJECT" onClick={toggleNav} className="hover:text-yellow-300">PROJECT</Link>
-          <Link href="#CONTACT" onClick={toggleNav} className="hover:text-yellow-300">CONTACT</Link>
-        </div>
-      </div>
-
-      {/* Overlay background when menu is open */}
+      {/* Overlay */}
       {isOpen && (
         <div
           onClick={toggleNav}
