@@ -47,10 +47,10 @@ export const Hero = () => {
           <ArrowDownTrayIcon className="w-6 h-6 text-black" />
         </button>
 
-        <button className="flex items-center space-x-2 group">
+        {/* <button className="flex items-center space-x-2 group">
           <PlayCircleIcon className="w-10 h-10 text-cyan-400 group-hover:text-yellow-400 transition duration-200" />
           <p className="text-lg font-semibold text-white">Watch the Video</p>
-        </button>
+        </button> */}
       </div>
     </div>
 

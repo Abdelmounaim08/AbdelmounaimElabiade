@@ -6,11 +6,11 @@ import 'aos/dist/aos.css';
 
 import Nav from "./component/Nav";
 import { Hero } from "./Hero";
-import About from "./component/About";
+// import About from "./component/About";
 import Service from "./component/Service";
 import Skils from "./component/Skils";
 import Project from "./component/Project";
-import Footer from "./component/Footer";
+// import Footer from "./component/Footer";
 import ContactSection from "./component/ContactSection";
 
 const Home = () => {

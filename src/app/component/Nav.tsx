@@ -12,7 +12,7 @@ const Nav = () => {
   return (
     <>
       {/* Top Navbar */}
-      <header className="bg-gradient-to-r from-slate-900/95 via-purple-900/95 to-slate-900/95 backdrop-blur-lg border-b border-purple-900/50 shadow-md fixed top-0 z-[10000] w-full">
+      <header className="bg-gradient-to-r px-2 from-slate-900/95 via-purple-900/95 to-slate-900/95 backdrop-blur-lg border-b border-purple-900/50 shadow-md fixed top-0 z-[10000] w-full">
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between h-[12vh]">
           {/* Logo SVG */}
           <Link href="#home" className="flex items-center space-x-2">
@@ -39,7 +39,7 @@ const Nav = () => {
           <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
             <Link href="#home" className="text-white hover:text-yellow-300 transition-colors">Accueil</Link>
             <Link href="#service" className="text-white hover:text-yellow-300 transition-colors">Services</Link>
-            <Link href="#ABOUT" className="text-white hover:text-yellow-300 transition-colors">À propos</Link>
+            {/* <Link href="#ABOUT" className="text-white hover:text-yellow-300 transition-colors">À propos</Link> */}
             <Link href="#EXPERIENCES" className="text-white hover:text-yellow-300 transition-colors">Expériences</Link>
             <Link href="#PROJECT" className="text-white hover:text-yellow-300 transition-colors">Projets</Link>
             <Link href="#CONTACT" className="text-white hover:text-yellow-300 transition-colors">Contact</Link>
