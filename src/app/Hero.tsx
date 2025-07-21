@@ -5,7 +5,7 @@ import { ExampleComponent } from './component/TextEffect'
 import Image from 'next/image'
 
 
-import { ArrowDownTrayIcon, PlayCircleIcon } from '@heroicons/react/16/solid'
+import { ArrowDownTrayIcon } from '@heroicons/react/16/solid'
 export const Hero = () => {
   const handleDownload = () => {
     const link = document.createElement('a');
