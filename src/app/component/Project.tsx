@@ -361,7 +361,7 @@ function Project() {
   // Données des projets avec toutes les images
 const projectCategories = [
   {
-    title: "Canabis Entreprise",
+    title: "Cannabis Company",
     projects: [
       {
         images: [
@@ -371,9 +371,9 @@ const projectCategories = [
           "/image/canabis3.png"
         ],
         link: "https://canabis-template.vercel.app/home",
-        title: "Canabis Entreprise",
-        description: `Le site Cannabis Template est une maquette moderne destinée aux entreprises du secteur du cannabis légal ou CBD. 
-Il présente une interface épurée, responsive et professionnelle, mettant en avant des produits à base de cannabis avec un style visuel haut de gamme.`,
+        title: "Cannabis Company",
+        description: `The Cannabis Template website is a modern mockup designed for businesses in the legal cannabis or CBD sector.
+It features a clean, responsive and professional interface, showcasing cannabis-based products with a premium visual style.`,
         technologies: ["Next js", "TypeScript", "Tailwind CSS", "Node.js", "MySQL", "Prisma"]
       }
     ]
@@ -388,15 +388,15 @@ Il présente une interface épurée, responsive et professionnelle, mettant en a
           "/image/themeMeastro3.png"
         ],
         link: "https://apps.shopify.com/maestro-theme-scheduler",
-        title: "Shopify app Avancé",
-        description: `Tableau de bord sophistiqué pour la gestion et la programmation automatique des thèmes Shopify. 
-Permet aux marchands de planifier des changements de thème selon des événements ou des périodes spécifiques.`,
+        title: "Advanced Shopify App",
+        description: `Sophisticated dashboard for managing and automatically scheduling Shopify themes.
+Allows merchants to plan theme changes based on specific events or time periods.`,
         technologies: ["Shopify API", "React", "Polaris", "GraphQL", "Webhook"]
       }
     ]
   },
   {
-    title: "École Al Jabr",
+    title: "Al Jabr School",
     projects: [
       {
         images: [
@@ -405,9 +405,9 @@ Permet aux marchands de planifier des changements de thème selon des événemen
           "/image/aljaberDSh.png"
         ],
         link: "https://ecolealjabr.com/",
-        title: "Site Web Éducatif",
-        description: `Plateforme éducative complète avec système de gestion des cours, des étudiants et des enseignants. 
-Interface moderne et intuitive pour faciliter l'apprentissage et l'administration.`,
+        title: "Educational Website",
+        description: `Complete educational platform with a management system for courses, students and teachers.
+Modern and intuitive interface to facilitate learning and administration.`,
         technologies: [
           "Next.js",
           "React",
@@ -434,9 +434,9 @@ Interface moderne et intuitive pour faciliter l'apprentissage et l'administratio
           "/image/flink5.png"
         ],
         link: "https://flink.ma/",
-        title: "Plateforme E-commerce Complète",
-        description: `Marketplace moderne avec système de paiement sécurisé, gestion multi-vendeurs, 
-système de messagerie intégré et analytics avancés. Conçue pour supporter un grand volume de transactions et d'utilisateurs.`,
+        title: "Complete E-commerce Platform",
+        description: `Modern marketplace with a secure payment system, multi-vendor management,
+integrated messaging system and advanced analytics. Designed to handle high volumes of transactions and users.`,
         technologies: [
           "Next.js",
           "Laravel",
@@ -472,15 +472,16 @@ système de messagerie intégré et analytics avancés. Conçue pour supporter u
           <div className="inline-flex items-center gap-3 bg-gradient-to-r from-cyan-500/10 to-purple-500/10 backdrop-blur-sm border border-cyan-400/20 rounded-full px-8 py-4 mb-8">
             <Github className="w-6 h-6 text-cyan-400" />
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white">
-              Mes <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">Projets</span>
+              My <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">Projects</span>
             </h1>
           </div>
           
           <div className="w-32 h-1 bg-gradient-to-r from-cyan-400 to-purple-400 mx-auto rounded-full mb-8"></div>
           
           <p className="text-gray-300 text-lg max-w-3xl mx-auto leading-relaxed">
-            Découvrez mes réalisations professionnelles, des applications web modernes aux plateformes e-commerce complexes.
-            Chaque projet représente un défi technique relevé avec passion et expertise.
+          
+            Discover my professional achievements, from modern web applications to complex e-commerce platforms.
+Each project represents a technical challenge tackled with passion and expertise.
           </p>
         </div>
 
@@ -503,7 +504,7 @@ système de messagerie intégré et analytics avancés. Conçue pour supporter u
             className="inline-flex items-center gap-3 bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400 text-white font-bold px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/25"
           >
             <Github className="w-5 h-5" />
-            <span>Voir tous mes projets</span>
+            <span>Explore my projects</span>
             <ExternalLink className="w-5 h-5" />
           </a>
         </div>

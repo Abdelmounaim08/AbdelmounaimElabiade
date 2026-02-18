@@ -38,55 +38,57 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="CONTACT" className="bg-gradient-to-r from-slate-900 via-purple-900 to-slate-900 py-16 px-4 text-white">
-      <div className="max-w-3xl mx-auto text-center mb-10">
-        <h2 className="text-4xl font-bold mb-4 text-yellow-300">Contact</h2>
-        <p className="text-gray-300">Vous avez un projet ou une question ? Envoyez-moi un message !</p>
-      </div>
+<section id="CONTACT" className="bg-gradient-to-r from-slate-900 via-purple-900 to-slate-900 py-16 px-4 text-white">
+  <div className="max-w-3xl mx-auto text-center mb-10">
+    <h2 className="text-4xl font-bold mb-4 text-yellow-300">Contact</h2>
+    <p className="text-gray-300">
+      Do you have a project or a question? Send me a message!
+    </p>
+  </div>
 
-      <form onSubmit={handleSubmit} className="max-w-2xl mx-auto space-y-6 bg-slate-800/60 p-6 rounded-2xl border border-purple-900 shadow-lg backdrop-blur">
-        <div className="space-y-2">
-          <Label className="text-yellow-300">Nom</Label>
-          <Input
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            placeholder="Votre nom"
-            className="bg-slate-900 text-white border-purple-900 focus-visible:ring-yellow-300"
-            required
-          />
-        </div>
+  <form onSubmit={handleSubmit} className="max-w-2xl mx-auto space-y-6 bg-slate-800/60 p-6 rounded-2xl border border-purple-900 shadow-lg backdrop-blur">
+    <div className="space-y-2">
+      <Label className="text-yellow-300">Name</Label>
+      <Input
+        name="name"
+        value={formData.name}
+        onChange={handleChange}
+        placeholder="Your name"
+        className="bg-slate-900 text-white border-purple-900 focus-visible:ring-yellow-300"
+        required
+      />
+    </div>
 
-        <div className="space-y-2">
-          <Label className="text-yellow-300">Email</Label>
-          <Input
-            name="email"
-            type="email"
-            value={formData.email}
-            onChange={handleChange}
-            placeholder="votre@email.com"
-            className="bg-slate-900 text-white border-purple-900 focus-visible:ring-yellow-300"
-            required
-          />
-        </div>
+    <div className="space-y-2">
+      <Label className="text-yellow-300">Email</Label>
+      <Input
+        name="email"
+        type="email"
+        value={formData.email}
+        onChange={handleChange}
+        placeholder="your@email.com"
+        className="bg-slate-900 text-white border-purple-900 focus-visible:ring-yellow-300"
+        required
+      />
+    </div>
 
-        <div className="space-y-2">
-          <Label className="text-yellow-300">Message</Label>
-          <Textarea
-            name="message"
-            value={formData.message}
-            onChange={handleChange}
-            placeholder="Votre message"
-            rows={6}
-            className="bg-slate-900 text-white border-purple-900 focus-visible:ring-yellow-300"
-            required
-          />
-        </div>
+    <div className="space-y-2">
+      <Label className="text-yellow-300">Message</Label>
+      <Textarea
+        name="message"
+        value={formData.message}
+        onChange={handleChange}
+        placeholder="Your message"
+        rows={6}
+        className="bg-slate-900 text-white border-purple-900 focus-visible:ring-yellow-300"
+        required
+      />
+    </div>
 
-        <Button type="submit" className="bg-yellow-300 text-slate-900 font-semibold hover:bg-yellow-400">
-          Envoyer
-        </Button>
-      </form>
-    </section>
+    <Button type="submit" className="bg-yellow-300 text-slate-900 font-semibold hover:bg-yellow-400">
+      Send
+    </Button>
+  </form>
+</section>
   );
 }
