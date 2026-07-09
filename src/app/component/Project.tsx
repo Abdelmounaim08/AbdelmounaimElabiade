@@ -501,7 +501,8 @@ integrated messaging system and advanced analytics. Designed to handle high volu
 
   const scrollCarousel = (direction: 'left' | 'right') => {
     if (!carouselRef.current) return;
-    const scrollOffset = carouselRef.current.clientWidth * 0.45;
+    const firstCard = carouselRef.current.querySelector<HTMLDivElement>('[data-carousel-card]');
+    const scrollOffset = (firstCard?.clientWidth ?? carouselRef.current.clientWidth * 0.45) + 24;
     carouselRef.current.scrollBy({ left: direction === 'left' ? -scrollOffset : scrollOffset, behavior: 'smooth' });
   };
 
