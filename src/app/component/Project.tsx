@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { ArrowRight, ExternalLink, Github, X } from 'lucide-react';
 
@@ -493,14 +493,17 @@ integrated messaging system and advanced analytics. Designed to handle high volu
   }
 ];
 
-  const featuredProjects = [
-    projectCategories[0].projects[0],
-    projectCategories[1].projects[0]
-  ];
-
+  const allProjects = projectCategories.flatMap((category) => category.projects);
   const [selectedProject, setSelectedProject] = useState<{
     images: string[]; link: string; title: string; description?: string; technologies?: string[]
   } | null>(null);
+  const carouselRef = useRef<HTMLDivElement | null>(null);
+
+  const scrollCarousel = (direction: 'left' | 'right') => {
+    if (!carouselRef.current) return;
+    const scrollOffset = carouselRef.current.clientWidth * 0.45;
+    carouselRef.current.scrollBy({ left: direction === 'left' ? -scrollOffset : scrollOffset, behavior: 'smooth' });
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 py-16 md:py-20 relative overflow-hidden" id="PROJECT">
@@ -519,29 +522,48 @@ integrated messaging system and advanced analytics. Designed to handle high volu
           <div className="inline-flex items-center gap-3 bg-gradient-to-r from-cyan-500/10 to-purple-500/10 backdrop-blur-sm border border-cyan-400/20 rounded-full px-8 py-4 mb-8">
             <Github className="w-6 h-6 text-cyan-400" />
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white">
-              My <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">Projects</span>
+              Projects <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">Carousel</span>
             </h1>
           </div>
           
           <div className="w-32 h-1 bg-gradient-to-r from-cyan-400 to-purple-400 mx-auto rounded-full mb-8"></div>
           
           <p className="text-gray-300 text-lg max-w-3xl mx-auto leading-relaxed">
-            Discover my professional achievements, from modern web applications to complex e-commerce platforms.
-Each project represents a technical challenge tackled with passion and expertise.
+            Scroll through all projects in a clean carousel layout with two cards visible at once.
           </p>
         </div>
 
         <div className="mb-8">
-          <div className="text-center mb-8">
-            <h3 className="text-2xl md:text-3xl font-bold text-white">Featured Projects</h3>
-            <p className="text-gray-400 max-w-2xl mx-auto mt-3">
-              A clean selection of two highlighted projects with polished presentation and fast access to details.
-            </p>
+          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between mb-6">
+            <div>
+              <h3 className="text-2xl md:text-3xl font-bold text-white">All Projects</h3>
+              <p className="text-gray-400 mt-2 max-w-2xl">
+                Every project is accessible while maintaining a clean two-card visible experience.
+              </p>
+            </div>
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={() => scrollCarousel('left')}
+                className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20"
+                aria-label="Scroll left"
+              >
+                ‹
+              </button>
+              <button
+                type="button"
+                onClick={() => scrollCarousel('right')}
+                className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20"
+                aria-label="Scroll right"
+              >
+                ›
+              </button>
+            </div>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-2">
-            {featuredProjects.map((project, index) => (
-              <div key={index} className="transition-transform duration-300 hover:-translate-y-2">
+          <div ref={carouselRef} className="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory scroll-smooth no-scrollbar">
+            {allProjects.map((project, index) => (
+              <div key={index} className="min-w-[calc(50%-1rem)] max-w-[520px] snap-start flex-shrink-0">
                 <ProjectCard
                   images={project.images}
                   projectLink={project.link}
@@ -558,18 +580,6 @@ Each project represents a technical challenge tackled with passion and expertise
         </div>
 
         <div className="text-center mt-12">
-          <a 
-            href="https://github.com/Abdelmounaim08" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400 text-white font-bold px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/25"
-          >
-            <Github className="w-5 h-5" />
-            <span>Explore my projects</span>
-            <ExternalLink className="w-5 h-5" />
-          </a>
-        </div>
-        <div className="text-center mt-20">
           <a 
             href="https://github.com/Abdelmounaim08" 
             target="_blank" 
