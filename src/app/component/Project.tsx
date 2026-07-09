@@ -494,6 +494,9 @@ integrated messaging system and advanced analytics. Designed to handle high volu
 ];
 
   const allProjects = projectCategories.flatMap((category) => category.projects);
+  const [activeCategoryIndex, setActiveCategoryIndex] = useState(0);
+  const selectedCategory = projectCategories[activeCategoryIndex];
+  const activeProjects = selectedCategory.projects;
   const [selectedProject, setSelectedProject] = useState<{
     images: string[]; link: string; title: string; description?: string; technologies?: string[]
   } | null>(null);
@@ -534,19 +537,78 @@ integrated messaging system and advanced analytics. Designed to handle high volu
           </p>
         </div>
 
-        <div className="mb-8">
+          <div className="mb-8">
+          <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between mb-6">
+            <div>
+              <h3 className="text-2xl md:text-3xl font-bold text-white">Projects</h3>
+              <p className="text-gray-400 mt-2 max-w-2xl">
+                Browse selected project categories with a 3D carousel that shows two cards at once.
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-2 items-center">
+              {projectCategories.map((category, index) => (
+                <button
+                  key={category.title}
+                  type="button"
+                  onClick={() => setActiveCategoryIndex(index)}
+                  className={`rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 border ${
+                    index === activeCategoryIndex
+                      ? 'bg-cyan-400 text-slate-950 border-cyan-400'
+                      : 'bg-white/5 text-white border-white/10 hover:bg-white/10'
+                  }`}
+                >
+                  {category.title}
+                </button>
+              ))}
+            </div>
+          </div>
+
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between mb-6">
             <div>
-              <h3 className="text-2xl md:text-3xl font-bold text-white">All Projects</h3>
-              <p className="text-gray-400 mt-2 max-w-2xl">
-                Every project is accessible while maintaining a clean two-card visible experience.
-              </p>
+              <p className="text-sm uppercase tracking-[0.25em] text-cyan-300">Section</p>
+              <h4 className="mt-2 text-3xl font-bold text-white">{selectedCategory.title}</h4>
             </div>
             <div className="flex items-center gap-2">
               <button
                 type="button"
-                onClick={() => scrollCarousel('left')}
+                onClick={() => setActiveCategoryIndex((prev) => (prev - 1 + projectCategories.length) % projectCategories.length)}
                 className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20"
+                aria-label="Previous section"
+              >
+                ‹
+              </button>
+              <button
+                type="button"
+                onClick={() => setActiveCategoryIndex((prev) => (prev + 1) % projectCategories.length)}
+                className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20"
+                aria-label="Next section"
+              >
+                ›
+              </button>
+            </div>
+          </div>
+
+          <div className="relative" style={{ perspective: '1400px' }}>
+            <div ref={carouselRef} className="flex gap-6 overflow-x-auto pb-6 snap-x snap-mandatory scroll-smooth no-scrollbar">
+              {activeProjects.map((project, index) => (
+                <div key={index} data-carousel-card className="min-w-[calc(50%-1rem)] max-w-[520px] snap-start flex-shrink-0">
+                  <ProjectCard
+                    images={project.images}
+                    projectLink={project.link}
+                    title={project.title}
+                    description={project.description}
+                    technologies={project.technologies}
+                    onOpen={() => setSelectedProject(project)}
+                  />
+                </div>
+              ))}
+            </div>
+
+            <div className="absolute right-0 top-1/2 -translate-y-1/2 flex flex-col gap-3">
+              <button
+                type="button"
+                onClick={() => scrollCarousel('left')}
+                className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20"
                 aria-label="Scroll left"
               >
                 ‹
@@ -554,27 +616,12 @@ integrated messaging system and advanced analytics. Designed to handle high volu
               <button
                 type="button"
                 onClick={() => scrollCarousel('right')}
-                className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20"
+                className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20"
                 aria-label="Scroll right"
               >
                 ›
               </button>
             </div>
-          </div>
-
-          <div ref={carouselRef} className="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory scroll-smooth no-scrollbar">
-            {allProjects.map((project, index) => (
-              <div key={index} className="min-w-[calc(50%-1rem)] max-w-[520px] snap-start flex-shrink-0">
-                <ProjectCard
-                  images={project.images}
-                  projectLink={project.link}
-                  title={project.title}
-                  description={project.description}
-                  technologies={project.technologies}
-                  onOpen={() => setSelectedProject(project)}
-                />
-              </div>
-            ))}
           </div>
 
           <ProjectModal open={!!selectedProject} project={selectedProject ?? undefined} onClose={() => setSelectedProject(null)} />
