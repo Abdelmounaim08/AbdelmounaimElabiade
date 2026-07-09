@@ -392,9 +392,9 @@ const projectCategories = [
       {
         images: ["/image/logo.webp"],
         link: "https://logicat.eu/",
-        title: "Full Stack Developer @ Logicat",
-        description: `Currently working as a Full Stack Developer at Logicat since March 1, 2026, contributing to modern web and software solutions with a focus on quality, scalability, automation, and best practices. I also work with WordPress, Elementor, DevOps, VPS, Claude, AI agents, and n8n to build efficient and modern digital workflows.`,
-        technologies: ["Full Stack", "React", "Next.js", "Node.js", "WordPress", "Elementor", "DevOps", "VPS", "Claude", "AI Agents", "n8n", "API Integration", "Team Collaboration"]
+        title: "Full Stack Developer • Société Logicat",
+        description: `Currently working as a Full Stack Developer at Logicat since March 1, 2026, contributing to modern web and software solutions with a focus on quality, scalability, automation, and best practices. I also work with WordPress, Elementor, WooCommerce, Cyber Panel, Claude AI, AI agents, n8n, Shopify, and Polaris to build efficient and modern digital workflows.`,
+        technologies: ["Full Stack", "React", "Next.js", "Node.js", "WordPress", "Elementor", "WooCommerce", "Cyber Panel", "Claude AI", "AI Agents", "n8n", "Shopify", "Polaris", "API Integration", "Team Collaboration"]
       }
     ]
   },

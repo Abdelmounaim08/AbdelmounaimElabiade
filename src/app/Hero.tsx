@@ -25,7 +25,7 @@ export const Hero = () => {
       <div className="relative z-10 w-[90%] max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-10 items-center h-full">
         <div className="flex flex-col justify-center h-full mt-6 rounded-3xl border border-white/10 bg-white/10 p-6 md:p-8 shadow-2xl shadow-cyan-950/20 backdrop-blur-xl">
           <div className="inline-flex w-fit items-center rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3 py-1 text-sm font-medium text-cyan-200">
-            Full Stack Developer • Available for ambitious projects
+            Full Stack Developer • Société Logicat
           </div>
 
           <h1 className="mt-5 text-3xl md:text-5xl text-white font-bold leading-tight text-center lg:text-left">
