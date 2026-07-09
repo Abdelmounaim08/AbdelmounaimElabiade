@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { ArrowRight, ExternalLink, Github, X, Zap } from 'lucide-react';
+import { ArrowRight, ExternalLink, Github, X } from 'lucide-react';
 
 interface ProjectCardProps {
   images: string[];
@@ -348,62 +348,6 @@ const ProjectModal: React.FC<{
   );
 };
 
-// Composant de catégorie de projet
-interface ProjectCategoryProps {
-  title: string;
-  projects: { images: string[]; link: string; title: string; description?: string; technologies?: string[] }[];
-  index: number;
-}
-
-const ProjectCategory: React.FC<ProjectCategoryProps> = ({ title, projects, index }) => {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsVisible(true);
-    }, index * 300);
-
-    return () => clearTimeout(timer);
-  }, [index]);
-
-  return (
-    <div
-      className={`mb-16 md:mb-20 transform transition-all duration-1000 ${
-        isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
-      }`}
-    >
-      {/* Titre de la catégorie */}
-      <div className="text-center mb-12 relative">
-        <div className="inline-flex items-center gap-3 bg-gradient-to-r from-cyan-500/10 to-purple-500/10 backdrop-blur-sm border border-cyan-400/20 rounded-full px-8 py-4">
-          <Zap className="w-5 h-5 text-yellow-400" />
-          <h3 className="text-white font-bold text-2xl">{title}</h3>
-        </div>
-      </div>
-      
-      {/* Grille de projets - Une seule colonne pour le nouveau layout */}
-      <div className="mx-auto w-[95%] md:w-[92%] space-y-5 md:space-y-6">
-        {projects.map((project, projectIndex) => (
-          <div
-            key={projectIndex}
-            className={`transform transition-all duration-700 ${
-              isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
-            }`}
-            style={{ transitionDelay: `${projectIndex * 150}ms` }}
-          >
-            <ProjectCard
-              images={project.images}
-              projectLink={project.link}
-              title={project.title}
-              description={project.description}
-              technologies={project.technologies}
-            />
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-};
-
 // Composant principal Project
 function Project() {
   const [isHeaderVisible, setIsHeaderVisible] = useState(false);
@@ -549,21 +493,14 @@ integrated messaging system and advanced analytics. Designed to handle high volu
   }
 ];
 
-  // Flattened list for compact carousel
-  const allProjects = projectCategories.flatMap((c) => c.projects);
+  const featuredProjects = [
+    projectCategories[0].projects[0],
+    projectCategories[1].projects[0]
+  ];
+
   const [selectedProject, setSelectedProject] = useState<{
     images: string[]; link: string; title: string; description?: string; technologies?: string[]
   } | null>(null);
-
-  const carouselRef = useRef<HTMLDivElement | null>(null);
-
-  const scrollCarousel = (direction: 'left' | 'right') => {
-    if (!carouselRef.current) return;
-    const width = carouselRef.current.clientWidth;
-    carouselRef.current.scrollBy({ left: direction === 'left' ? -width * 0.6 : width * 0.6, behavior: 'smooth' });
-  };
-
-
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 py-16 md:py-20 relative overflow-hidden" id="PROJECT">
@@ -594,47 +531,44 @@ Each project represents a technical challenge tackled with passion and expertise
           </p>
         </div>
 
-        {/* Catégories de projets */}
-        {/* Compact carousel showing projects horizontally */}
         <div className="mb-8">
-          <div className="flex items-center justify-between mb-4">
-            <h3 className="text-xl font-bold text-white">Selected Projects</h3>
-            <div className="flex items-center gap-2">
-              <button onClick={() => scrollCarousel('left')} className="px-3 py-2 bg-white/5 rounded-md text-white">‹</button>
-              <button onClick={() => scrollCarousel('right')} className="px-3 py-2 bg-white/5 rounded-md text-white">›</button>
-            </div>
+          <div className="text-center mb-8">
+            <h3 className="text-2xl md:text-3xl font-bold text-white">Featured Projects</h3>
+            <p className="text-gray-400 max-w-2xl mx-auto mt-3">
+              A clean selection of two highlighted projects with polished presentation and fast access to details.
+            </p>
           </div>
 
-          <div ref={carouselRef} className="relative flex gap-4 overflow-x-auto no-scrollbar snap-x snap-mandatory" style={{ scrollSnapType: 'x mandatory' }}>
-            {allProjects.map((p, i) => (
-              <div key={i} className="flex-shrink-0 w-[320px] snap-start">
+          <div className="grid gap-6 md:grid-cols-2">
+            {featuredProjects.map((project, index) => (
+              <div key={index} className="transition-transform duration-300 hover:-translate-y-2">
                 <ProjectCard
-                  images={p.images}
-                  projectLink={p.link}
-                  title={p.title}
-                  description={p.description}
-                  technologies={p.technologies}
-                  onOpen={() => setSelectedProject(p)}
+                  images={project.images}
+                  projectLink={project.link}
+                  title={project.title}
+                  description={project.description}
+                  technologies={project.technologies}
+                  onOpen={() => setSelectedProject(project)}
                 />
               </div>
             ))}
           </div>
 
-          {/* Modal for details */}
           <ProjectModal open={!!selectedProject} project={selectedProject ?? undefined} onClose={() => setSelectedProject(null)} />
         </div>
 
-        {/* Category lists (kept for full listing if needed) */}
-        {projectCategories.map((category, index) => (
-          <ProjectCategory 
-            key={index}
-            title={category.title}
-            projects={category.projects}
-            index={index}
-          />
-        ))}
-        
-        {/* Call to action */}
+        <div className="text-center mt-12">
+          <a 
+            href="https://github.com/Abdelmounaim08" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-3 bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400 text-white font-bold px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/25"
+          >
+            <Github className="w-5 h-5" />
+            <span>Explore my projects</span>
+            <ExternalLink className="w-5 h-5" />
+          </a>
+        </div>
         <div className="text-center mt-20">
           <a 
             href="https://github.com/Abdelmounaim08" 
