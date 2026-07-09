@@ -116,7 +116,20 @@
   * {
     @apply border-border outline-ring/50;
   }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    @apply bg-background text-foreground;
+    @apply min-h-screen bg-background text-foreground antialiased;
+    background-image: radial-gradient(circle at top left, rgba(34, 211, 238, 0.12), transparent 28%),
+      radial-gradient(circle at bottom right, rgba(168, 85, 247, 0.16), transparent 32%);
+    background-color: #020617;
+  }
+
+  ::selection {
+    background-color: rgba(34, 211, 238, 0.35);
+    color: white;
   }
 }

@@ -361,6 +361,44 @@ function Project() {
   // Données des projets avec toutes les images
 const projectCategories = [
   {
+    title: "Personal Projects",
+    projects: [
+      {
+        images: ["/image/logo.webp"],
+        link: "https://www.chargego.ma/",
+        title: "ChargeGo",
+        description: `A modern web platform focused on electric mobility and charging solutions, with a clean and professional user experience.`,
+        technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "SEO"]
+      },
+      {
+        images: ["/image/logo.webp"],
+        link: "https://www.mecainfo.com/uk/",
+        title: "Mecainfo",
+        description: `A polished corporate website presenting technical services and solutions with a strong digital presence and modern visuals.`,
+        technologies: ["Next.js", "React", "Tailwind CSS", "Responsive Design", "Performance"]
+      }
+    ]
+  },
+  {
+    title: "Professional Work",
+    projects: [
+      {
+        images: ["/image/logo.webp"],
+        link: "https://logicat.eu/",
+        title: "Logicat",
+        description: `A company website designed with a modern structure, strong usability, and a professional presentation tailored for business audiences.`,
+        technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "UI/UX"]
+      },
+      {
+        images: ["/image/logo.webp"],
+        link: "https://logicat.eu/",
+        title: "Full Stack Developer @ Logicat",
+        description: `Currently working as a Full Stack Developer at Logicat since March 1, 2026, contributing to modern web and software solutions with a focus on quality, scalability, automation, and best practices. I also work with WordPress, Elementor, DevOps, VPS, Claude, AI agents, and n8n to build efficient and modern digital workflows.`,
+        technologies: ["Full Stack", "React", "Next.js", "Node.js", "WordPress", "Elementor", "DevOps", "VPS", "Claude", "AI Agents", "n8n", "API Integration", "Team Collaboration"]
+      }
+    ]
+  },
+  {
     title: "Cannabis Company",
     projects: [
       {

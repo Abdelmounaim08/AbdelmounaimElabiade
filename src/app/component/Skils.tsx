@@ -4,8 +4,27 @@ import SklisItems from './SklisItems';
 import TechSphere from './TechSphere';
 
 function Skils() {
+  const techStack = [
+    { name: 'Next.js', detail: 'Modern fullstack applications' },
+    { name: 'React', detail: 'Reusable UI systems' },
+    { name: 'TypeScript', detail: 'Reliable and scalable code' },
+    { name: 'Node.js', detail: 'Fast backend services' },
+    { name: 'Laravel', detail: 'Robust business logic' },
+    { name: 'WordPress', detail: 'Flexible content-driven sites' },
+    { name: 'Elementor', detail: 'Visual page building' },
+    { name: 'Tailwind CSS', detail: 'Clean and responsive design' },
+    { name: 'Prisma', detail: 'Type-safe data access' },
+    { name: 'PostgreSQL', detail: 'Structured data storage' },
+    { name: 'DevOps', detail: 'Deployment and automation' },
+    { name: 'VPS', detail: 'Server hosting and management' },
+    { name: 'Claude', detail: 'AI-assisted development' },
+    { name: 'AI Agents', detail: 'Automation and intelligent workflows' },
+    { name: 'n8n', detail: 'No-code automation pipelines' },
+    { name: 'Git & GitHub', detail: 'Collaborative workflows' },
+  ];
+
   return (
-    <div className="pt-16 md:pt-32 pb-20 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+    <div className="bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 px-4 py-16 md:py-24">
       <motion.h1
         className="text-center text-3xl md:text-4xl lg:text-5xl font-bold text-white"
         initial={{ opacity: 0, y: -20 }}
@@ -15,7 +34,20 @@ function Skils() {
         Education & <span className="text-yellow-400">Skills</span>
       </motion.h1>
 
-      <div className="w-4/5 mx-auto pt-16 md:pt-32 grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+      <p className="mx-auto mt-4 max-w-2xl text-center text-sm text-slate-300 md:text-base">
+        I combine modern frontend, backend, and product-thinking skills to deliver polished digital experiences.
+      </p>
+
+      <div className="mx-auto mt-8 flex flex-wrap justify-center gap-3">
+        {techStack.map((item) => (
+          <div key={item.name} className="rounded-full border border-white/10 bg-white/10 px-4 py-2 text-sm text-slate-100 backdrop-blur">
+            <span className="font-semibold text-cyan-300">{item.name}</span>
+            <span className="ml-2 text-slate-300">{item.detail}</span>
+          </div>
+        ))}
+      </div>
+
+      <div className="mx-auto mt-12 grid w-full max-w-6xl grid-cols-1 gap-8 md:grid-cols-2 md:gap-10">
         <motion.div
           className="transform perspective-1000"
           initial={{ rotateY: 15 }}
@@ -63,7 +95,7 @@ function Skils() {
         </motion.div>
       </div>
 
-      <div className="relative h-full w-full rounded-xl overflow-hidden">
+      <div className="relative mt-12 h-full w-full overflow-hidden rounded-xl">
         <TechSphere />
       </div>
     </div>
