@@ -493,7 +493,6 @@ integrated messaging system and advanced analytics. Designed to handle high volu
   }
 ];
 
-  const allProjects = projectCategories.flatMap((category) => category.projects);
   const [activeCategoryIndex, setActiveCategoryIndex] = useState(0);
   const selectedCategory = projectCategories[activeCategoryIndex];
   const activeProjects = selectedCategory.projects;
