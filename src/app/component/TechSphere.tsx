@@ -13,6 +13,20 @@ interface Experience {
 
 const experiences: Experience[] = [
   {
+    id: 5,
+    period: "01/03/2026 - Présent",
+    title: "FULL STACK DEVELOPER",
+    company: "Société Logicat",
+    description: [
+      "Working as a Full Stack Developer at Logicat on modern web and software solutions.",
+      "Contributing to both frontend and backend development with a strong focus on quality and scalability.",
+      "Building and improving WordPress, Elementor, WooCommerce, and automation workflows.",
+      "Using DevOps, VPS, Claude AI, AI agents, and n8n to optimize delivery and operations."
+    ],
+    technologies: ["Full Stack", "Next.js", "React", "Node.js", "WordPress", "Elementor", "WooCommerce", "DevOps", "VPS", "Claude AI", "AI Agents", "n8n", "Shopify", "Polaris"],
+    isActive: true
+  },
+  {
     id: 1,
     period: "01/09/2023 - 05/01/2024",
     title: "FULL STACK WEB DEVELOPER (INTERNSHIP)",

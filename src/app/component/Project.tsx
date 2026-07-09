@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { ArrowRight, ExternalLink, Github, X, Zap } from 'lucide-react';
 
@@ -8,6 +8,7 @@ interface ProjectCardProps {
   title: string;
   description?: string;
   technologies?: string[];
+  onOpen?: () => void;
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ 
@@ -15,7 +16,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   projectLink, 
   title, 
   description,
-  technologies = []
+  technologies = [],
+  onOpen
 }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -50,6 +52,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
     window.open(projectLink, '_blank', 'noopener,noreferrer');
   };
 
+  const handleCardClick = (e: React.MouseEvent) => {
+    // If user clicked the link button, do not open modal
+    if ((e.target as HTMLElement).closest('button')) return;
+    if (onOpen) onOpen();
+  };
+
   const handleOverlayClick = (e: React.MouseEvent) => {
     if (e.target === e.currentTarget) {
       setShowAllTechnologies(false);
@@ -62,17 +70,18 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         className="relative w-full group cursor-pointer"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
+        onClick={handleCardClick}
       >
         <div
-          className={`w-full relative rounded-2xl shadow-2xl overflow-hidden backdrop-blur-sm bg-white/5 border border-white/10 transition-all duration-700 transform ${
-            isHovered ? 'scale-[1.02] shadow-cyan-500/25 border-cyan-400/30' : ''
+          className={`w-full relative overflow-hidden rounded-[1.5rem] border border-white/10 bg-slate-950/70 shadow-[0_15px_50px_rgba(2,8,23,0.35)] backdrop-blur-xl transition-all duration-700 transform ${
+            isHovered ? 'scale-[1.005] border-cyan-400/35 shadow-cyan-500/20' : ''
           }`}
         >
-          {/* Layout Flex avec Image à gauche et Contenu à droite */}
-          <div className="flex flex-col md:flex-row min-h-[320px]">
+          {/* Layout compact */}
+          <div className="flex flex-col md:grid md:grid-cols-[0.8fr_1.2fr] min-h-[260px] md:min-h-[280px]">
             
-            {/* Section Image Slider - Gauche */}
-            <div className="md:w-2/5 relative overflow-hidden">
+            {/* Section Image Slider */}
+            <div className="relative overflow-hidden">
               {/* Container du slider */}
               <div className="relative w-full h-full">
                 {/* Images avec Next.js Image */}
@@ -173,11 +182,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             </div>
             
             {/* Section Contenu - Droite */}
-            <div className="md:w-3/5 p-6 md:p-8 flex flex-col justify-between bg-gradient-to-br from-slate-800/90 to-slate-900/90">
+            <div className="flex flex-col justify-between p-5 md:p-6 bg-gradient-to-br from-slate-800/95 via-slate-900/95 to-slate-950/95">
               
               {/* Header du contenu */}
-              <div className="space-y-4">
-                <h4 className={`text-white font-bold text-xl md:text-2xl leading-tight transition-all duration-300 ${
+              <div className="space-y-3">
+                <h4 className={`text-white font-bold text-lg md:text-xl leading-tight transition-all duration-300 ${
                   isHovered ? 'text-cyan-400 transform translate-x-2' : ''
                 }`}>
                   {title}
@@ -185,11 +194,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
                 
                 {/* Ligne décorative */}
                 <div className={`h-1 bg-gradient-to-r from-cyan-400 to-purple-400 rounded-full transition-all duration-500 ${
-                  isHovered ? 'w-20' : 'w-12'
+                  isHovered ? 'w-16' : 'w-10'
                 }`}></div>
                 
                 {description && (
-                  <p className={`text-gray-300 text-sm md:text-base leading-relaxed transition-all duration-500 ${
+                  <p className={`text-gray-300 text-sm leading-relaxed transition-all duration-500 ${
                     isHovered ? 'text-gray-200 transform translate-x-1' : ''
                   }`}>
                     {description}
@@ -198,7 +207,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
               </div>
               
               {/* Footer du contenu */}
-              <div className="space-y-4 mt-6">
+              <div className="mt-4 space-y-3">
                 
                 {/* Technologies */}
                 {technologies.length > 0 && (
@@ -210,7 +219,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
                       {technologies.map((tech, index) => (
                         <span
                           key={index}
-                          className={`bg-gradient-to-r from-cyan-500/20 to-purple-500/20 border border-cyan-400/30 text-cyan-300 px-3 py-1 rounded-full text-xs font-medium backdrop-blur-sm transition-all duration-300 ${
+                          className={`bg-gradient-to-r from-cyan-500/20 to-purple-500/20 border border-cyan-400/30 text-cyan-300 px-2.5 py-1 rounded-full text-[11px] font-medium backdrop-blur-sm transition-all duration-300 ${
                             isHovered ? 'border-cyan-400/50 bg-gradient-to-r from-cyan-500/30 to-purple-500/30' : ''
                           }`}
                         >
@@ -290,6 +299,55 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   );
 };
 
+// Modal to show project details when a project is clicked
+const ProjectModal: React.FC<{
+  open: boolean;
+  project?: { images: string[]; link: string; title: string; description?: string; technologies?: string[] };
+  onClose: () => void;
+}> = ({ open, project, onClose }) => {
+  if (!open || !project) return null;
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4" onClick={onClose}>
+      <div className="absolute inset-0 bg-black/70" />
+      <div className="relative z-10 max-w-4xl w-full bg-slate-900/95 rounded-2xl p-6 md:p-8 border border-white/10 shadow-2xl" onClick={(e) => e.stopPropagation()}>
+        <div className="flex flex-col md:flex-row gap-6">
+          <div className="md:w-1/2 h-64 md:h-96 relative rounded-lg overflow-hidden border border-white/5">
+            <Image src={project.images[0] ?? '/image/logo.webp'} alt={project.title} fill className="object-cover" />
+          </div>
+          <div className="md:w-1/2">
+            <div className="flex items-start justify-between">
+              <h3 className="text-2xl font-bold text-white">{project.title}</h3>
+              <div className="text-sm text-cyan-300">
+                <a href={project.link} target="_blank" rel="noreferrer" className="underline">Voir le site</a>
+              </div>
+            </div>
+
+            {project.description && (
+              <p className="mt-3 text-slate-300 text-sm">{project.description}</p>
+            )}
+
+            {project.technologies && (
+              <div className="mt-4">
+                <p className="text-cyan-400 text-xs font-semibold uppercase tracking-wider">Technologies</p>
+                <div className="mt-2 flex flex-wrap gap-2">
+                  {project.technologies.map((t, i) => (
+                    <span key={i} className="px-2 py-1 rounded-full text-xs bg-white/5 border border-white/10 text-cyan-200">{t}</span>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            <div className="mt-6 text-right">
+              <button onClick={onClose} className="px-4 py-2 bg-yellow-300 text-slate-900 rounded-lg font-semibold">Fermer</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 // Composant de catégorie de projet
 interface ProjectCategoryProps {
   title: string;
@@ -310,7 +368,7 @@ const ProjectCategory: React.FC<ProjectCategoryProps> = ({ title, projects, inde
 
   return (
     <div
-      className={`mb-20 transform transition-all duration-1000 ${
+      className={`mb-16 md:mb-20 transform transition-all duration-1000 ${
         isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
       }`}
     >
@@ -323,7 +381,7 @@ const ProjectCategory: React.FC<ProjectCategoryProps> = ({ title, projects, inde
       </div>
       
       {/* Grille de projets - Une seule colonne pour le nouveau layout */}
-      <div className="w-[95%] mx-auto space-y-8">
+      <div className="mx-auto w-[95%] md:w-[92%] space-y-5 md:space-y-6">
         {projects.map((project, projectIndex) => (
           <div
             key={projectIndex}
@@ -364,14 +422,14 @@ const projectCategories = [
     title: "Personal Projects",
     projects: [
       {
-        images: ["/image/logo.webp"],
+        images: ["/image/chargego.png"],
         link: "https://www.chargego.ma/",
         title: "ChargeGo",
         description: `A modern web platform focused on electric mobility and charging solutions, with a clean and professional user experience.`,
         technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "SEO"]
       },
       {
-        images: ["/image/logo.webp"],
+        images: ["/image/mecainfo.png", "/image/logo.webp"],
         link: "https://www.mecainfo.com/uk/",
         title: "Mecainfo",
         description: `A polished corporate website presenting technical services and solutions with a strong digital presence and modern visuals.`,
@@ -491,6 +549,20 @@ integrated messaging system and advanced analytics. Designed to handle high volu
   }
 ];
 
+  // Flattened list for compact carousel
+  const allProjects = projectCategories.flatMap((c) => c.projects);
+  const [selectedProject, setSelectedProject] = useState<{
+    images: string[]; link: string; title: string; description?: string; technologies?: string[]
+  } | null>(null);
+
+  const carouselRef = useRef<HTMLDivElement | null>(null);
+
+  const scrollCarousel = (direction: 'left' | 'right') => {
+    if (!carouselRef.current) return;
+    const width = carouselRef.current.clientWidth;
+    carouselRef.current.scrollBy({ left: direction === 'left' ? -width * 0.6 : width * 0.6, behavior: 'smooth' });
+  };
+
 
 
   return (
@@ -517,13 +589,42 @@ integrated messaging system and advanced analytics. Designed to handle high volu
           <div className="w-32 h-1 bg-gradient-to-r from-cyan-400 to-purple-400 mx-auto rounded-full mb-8"></div>
           
           <p className="text-gray-300 text-lg max-w-3xl mx-auto leading-relaxed">
-          
             Discover my professional achievements, from modern web applications to complex e-commerce platforms.
 Each project represents a technical challenge tackled with passion and expertise.
           </p>
         </div>
 
         {/* Catégories de projets */}
+        {/* Compact carousel showing projects horizontally */}
+        <div className="mb-8">
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-xl font-bold text-white">Selected Projects</h3>
+            <div className="flex items-center gap-2">
+              <button onClick={() => scrollCarousel('left')} className="px-3 py-2 bg-white/5 rounded-md text-white">‹</button>
+              <button onClick={() => scrollCarousel('right')} className="px-3 py-2 bg-white/5 rounded-md text-white">›</button>
+            </div>
+          </div>
+
+          <div ref={carouselRef} className="relative flex gap-4 overflow-x-auto no-scrollbar snap-x snap-mandatory" style={{ scrollSnapType: 'x mandatory' }}>
+            {allProjects.map((p, i) => (
+              <div key={i} className="flex-shrink-0 w-[320px] snap-start">
+                <ProjectCard
+                  images={p.images}
+                  projectLink={p.link}
+                  title={p.title}
+                  description={p.description}
+                  technologies={p.technologies}
+                  onOpen={() => setSelectedProject(p)}
+                />
+              </div>
+            ))}
+          </div>
+
+          {/* Modal for details */}
+          <ProjectModal open={!!selectedProject} project={selectedProject ?? undefined} onClose={() => setSelectedProject(null)} />
+        </div>
+
+        {/* Category lists (kept for full listing if needed) */}
         {projectCategories.map((category, index) => (
           <ProjectCategory 
             key={index}
