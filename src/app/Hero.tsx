@@ -71,8 +71,8 @@ export const Hero = () => {
           <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-[2rem] border border-white/15 bg-gradient-to-br from-cyan-400/20 via-violet-500/20 to-transparent p-3 shadow-2xl shadow-cyan-950/40">
             <div className="relative h-full w-full overflow-hidden rounded-[1.5rem]">
               <Image
-                src="/image/mounaim01.jpeg"
-                alt="Abdelmounaim Elabiade"
+                src="/image/hero.png"
+                alt="Hero image"
                 fill
                 className="object-cover"
               />
