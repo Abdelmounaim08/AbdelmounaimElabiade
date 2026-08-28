@@ -1,5 +1,6 @@
 "use client";
-import { FormEvent, useState } from "react";
+import { useState } from "react";
+import type { FormEvent } from "react";
 import { ArrowUpRight, Linkedin, Mail } from "lucide-react";
 const professionalEmail = "hello@abdelmounaim.dev";
 export default function ContactSection() { const [sent, setSent] = useState(false); const handleSubmit = (event: FormEvent<HTMLFormElement>) => { event.preventDefault(); const data = new FormData(event.currentTarget); const subject = encodeURIComponent("Nouveau projet — " + (data.get("name") ?? "contact")); const body = encodeURIComponent("Nom : " + data.get("name") + "
