@@ -1,53 +1,21 @@
-'use client';
-
+"use client";
 import { useEffect } from "react";
-import AOS from "aos";
-import 'aos/dist/aos.css';
-
 import Nav from "./component/Nav";
 import { Hero } from "./Hero";
-// import About from "./component/About";
+import About from "./component/About";
 import Service from "./component/Service";
 import Skils from "./component/Skils";
 import Project from "./component/Project";
-// import Footer from "./component/Footer";
 import ContactSection from "./component/ContactSection";
+import Footer from "./component/Footer";
 
-const Home = () => {
+export default function Home() {
   useEffect(() => {
-    AOS.init({
-      offset: 120,
-      delay: 0,
-      duration: 1000,
-      easing: 'ease',
-      once: true,
-      mirror: false,
-      anchorPlacement: 'top-bottom',
-    });
+    const elements = document.querySelectorAll<HTMLElement>(".reveal");
+    if (!("IntersectionObserver" in window)) { elements.forEach((element) => element.classList.add("is-visible")); return; }
+    const observer = new IntersectionObserver((entries) => entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add("is-visible"); observer.unobserve(entry.target); } }), { threshold: 0.12, rootMargin: "0px 0px -48px" });
+    elements.forEach((element) => observer.observe(element));
+    return () => observer.disconnect();
   }, []);
-
-  return (
-    <div className="overflow-x-hidden">
-      <div>
-        {/* Navbar */}
-        <Nav />
-
-        {/* Hero section */}
-        <Hero />
-
-        {/* Main content */}
-        <div className="relative z-30">
-          {/* <About /> */}
-          <Service />
-          <Skils />
-          <Project />
-          <ContactSection/>
-
-          {/* <Footer /> */}
-        </div>
-      </div>
-    </div>
-  );
-};
-
-export default Home;
+  return <div className="site-shell overflow-x-hidden"><Nav /><main><Hero /><About /><Service /><Skils /><Project /><ContactSection /></main><Footer /></div>;
+}
