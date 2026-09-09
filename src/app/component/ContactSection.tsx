@@ -1,9 +1,56 @@
 "use client";
+
 import { useState } from "react";
 import type { FormEvent } from "react";
 import { ArrowUpRight, Linkedin, Mail } from "lucide-react";
-const professionalEmail = "hello@abdelmounaim.dev";
-export default function ContactSection() { const [sent, setSent] = useState(false); const handleSubmit = (event: FormEvent<HTMLFormElement>) => { event.preventDefault(); const data = new FormData(event.currentTarget); const subject = encodeURIComponent("Nouveau projet — " + (data.get("name") ?? "contact")); const body = encodeURIComponent("Nom : " + data.get("name") + "
-Email : " + data.get("email") + "
 
-" + data.get("message")); window.location.href = "mailto:" + professionalEmail + "?subject=" + subject + "&body=" + body; setSent(true); }; return <section id="CONTACT" className="surface-muted border-t border-theme px-5 py-24 sm:px-8 lg:px-12 lg:py-32"><div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[.8fr_1.2fr] lg:gap-24"><div className="reveal"><p className="section-label">Contact</p><h2 className="mt-4 text-4xl font-black tracking-[-.04em] sm:text-5xl">Un projet en tête ? Parlons-en.</h2><p className="text-muted mt-6 max-w-md leading-7">Une idée, une refonte ou un produit à lancer ? Décris-moi le contexte. Je te répondrai avec une première lecture concrète.</p><div className="mt-8 space-y-3"><a href={"mailto:" + professionalEmail} className="surface flex items-center gap-3 rounded-xl border p-4 text-sm font-bold transition hover:border-[#8c72ff]"><Mail className="h-5 w-5 text-[#48dfff]" />{professionalEmail}</a><a href="https://www.linkedin.com/in/abdelmounaim-elabiade/" target="_blank" rel="noreferrer" className="surface flex items-center gap-3 rounded-xl border p-4 text-sm font-bold transition hover:border-[#8c72ff]"><Linkedin className="h-5 w-5 text-[#48dfff]" />LinkedIn <ArrowUpRight className="ml-auto h-4 w-4" /></a></div></div><form onSubmit={handleSubmit} className="reveal surface rounded-2xl border p-6 sm:p-8" style={{ transitionDelay: "120ms" }}><div className="grid gap-5 sm:grid-cols-2"><label className="text-sm font-bold">Nom<input name="name" required placeholder="Ton nom" className="surface-muted border-theme mt-2 w-full rounded-xl border px-4 py-3 text-sm outline-none transition placeholder:text-muted focus:border-[#8c72ff]" /></label><label className="text-sm font-bold">Email<input name="email" required type="email" placeholder="ton@email.com" className="surface-muted border-theme mt-2 w-full rounded-xl border px-4 py-3 text-sm outline-none transition placeholder:text-muted focus:border-[#8c72ff]" /></label></div><label className="mt-5 block text-sm font-bold">Message<textarea name="message" required rows={6} placeholder="Parle-moi de ton projet..." className="surface-muted border-theme mt-2 w-full resize-none rounded-xl border px-4 py-3 text-sm outline-none transition placeholder:text-muted focus:border-[#8c72ff]" /></label><div className="mt-6 flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between"><button type="submit" className="inline-flex items-center gap-2 rounded-full bg-[#23d7ff] px-5 py-3 text-sm font-extrabold text-[#0d092a] transition hover:bg-[#72efff]">Envoyer le message <ArrowUpRight className="h-4 w-4" /></button>{sent && <p className="text-xs font-semibold text-[#8c72ff]">Ton client email va s&apos;ouvrir.</p>}</div></form></div></section>; }
+const professionalEmail = "hello@abdelmounaim.dev";
+
+export default function ContactSection() {
+  const [sent, setSent] = useState(false);
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    const subject = encodeURIComponent("Nouveau projet — " + (data.get("name") ?? "contact"));
+    const body = encodeURIComponent(
+      "Nom : " + data.get("name") + "\nEmail : " + data.get("email") + "\n\n" + data.get("message"),
+    );
+    window.location.href = "mailto:" + professionalEmail + "?subject=" + subject + "&body=" + body;
+    setSent(true);
+  };
+
+  return (
+    <section id="CONTACT" className="surface-muted border-t border-theme px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
+      <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[.8fr_1.2fr] lg:gap-24">
+        <div className="reveal">
+          <p className="section-label">Contact</p>
+          <h2 className="mt-4 text-4xl font-black tracking-[-.04em] sm:text-5xl">Un projet en tête ? Parlons-en.</h2>
+          <p className="text-muted mt-6 max-w-md leading-7">
+            Une idée, une refonte ou un produit à lancer ? Décris-moi le contexte. Je te répondrai avec une première lecture concrète.
+          </p>
+          <div className="mt-8 space-y-3">
+            <a href={"mailto:" + professionalEmail} className="surface flex items-center gap-3 rounded-xl border p-4 text-sm font-bold transition hover:border-[#8c72ff]">
+              <Mail className="h-5 w-5 text-[#48dfff]" />{professionalEmail}
+            </a>
+            <a href="https://www.linkedin.com/in/abdelmounaim-elabiade/" target="_blank" rel="noreferrer" className="surface flex items-center gap-3 rounded-xl border p-4 text-sm font-bold transition hover:border-[#8c72ff]">
+              <Linkedin className="h-5 w-5 text-[#48dfff]" />LinkedIn <ArrowUpRight className="ml-auto h-4 w-4" />
+            </a>
+          </div>
+        </div>
+
+        <form onSubmit={handleSubmit} className="reveal surface rounded-2xl border p-6 sm:p-8" style={{ transitionDelay: "120ms" }}>
+          <div className="grid gap-5 sm:grid-cols-2">
+            <label className="text-sm font-bold">Nom<input name="name" required placeholder="Ton nom" className="surface-muted border-theme mt-2 w-full rounded-xl border px-4 py-3 text-sm outline-none transition placeholder:text-muted focus:border-[#8c72ff]" /></label>
+            <label className="text-sm font-bold">Email<input name="email" required type="email" placeholder="ton@email.com" className="surface-muted border-theme mt-2 w-full rounded-xl border px-4 py-3 text-sm outline-none transition placeholder:text-muted focus:border-[#8c72ff]" /></label>
+          </div>
+          <label className="mt-5 block text-sm font-bold">Message<textarea name="message" required rows={6} placeholder="Parle-moi de ton projet..." className="surface-muted border-theme mt-2 w-full resize-none rounded-xl border px-4 py-3 text-sm outline-none transition placeholder:text-muted focus:border-[#8c72ff]" /></label>
+          <div className="mt-6 flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <button type="submit" className="inline-flex items-center gap-2 rounded-full bg-[#23d7ff] px-5 py-3 text-sm font-extrabold text-[#0d092a] transition hover:bg-[#72efff]">Envoyer le message <ArrowUpRight className="h-4 w-4" /></button>
+            {sent && <p className="text-xs font-semibold text-[#8c72ff]">Ton client email va s&apos;ouvrir.</p>}
+          </div>
+        </form>
+      </div>
+    </section>
+  );
+}
