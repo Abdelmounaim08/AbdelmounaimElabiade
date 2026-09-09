@@ -1,9 +1,24 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @custom-variant dark (&:is(.dark *));
-:root { --background: #f5f7f4; --foreground: #10201d; --surface: #ffffff; --surface-muted: #eaf0ec; --line: rgba(16,32,29,.12); --muted: #5f716c; --accent: #b9f227; --accent-strong: #7bb800; --accent-contrast: #132000; }
-.dark { --background: #081210; --foreground: #eff8f0; --surface: #0e1c18; --surface-muted: #132721; --line: rgba(236,248,239,.13); --muted: #9aafa7; --accent: #c5f54a; --accent-strong: #9bd327; --accent-contrast: #112000; }
-* { box-sizing: border-box; } html { scroll-behavior: smooth; } body { min-height: 100vh; background: var(--background); color: var(--foreground); text-rendering: optimizeLegibility; transition: background-color 280ms ease, color 280ms ease; } ::selection { background: var(--accent); color: var(--accent-contrast); } a { color: inherit; }
-.site-shell { background: var(--background); } .surface { background: var(--surface); border-color: var(--line); } .surface-muted { background: var(--surface-muted); } .text-muted { color: var(--muted); } .border-theme { border-color: var(--line); } .section-label { color: var(--accent-strong); font-size: .72rem; font-weight: 800; letter-spacing: .22em; text-transform: uppercase; } .accent-gradient { background: linear-gradient(120deg, var(--accent), #84e4bb 52%, #62b7ff); -webkit-background-clip: text; background-clip: text; color: transparent; }
-.hero-grid { background-image: linear-gradient(rgba(185,242,39,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(185,242,39,.08) 1px, transparent 1px); background-size: 44px 44px; mask-image: linear-gradient(to bottom, black, transparent 85%); } .reveal { opacity: 0; transform: translateY(22px); transition: opacity 700ms ease, transform 700ms cubic-bezier(.2,.7,.2,1); } .reveal.is-visible { opacity: 1; transform: translateY(0); } .float-slow { animation: float-slow 7s ease-in-out infinite; } @keyframes float-slow { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+:root { --background: #f7f6ff; --foreground: #11102d; --surface: #ffffff; --surface-muted: #f0edff; --line: rgba(17,16,45,.12); --muted: #655e82; --accent: #23d7ff; --accent-strong: #6758e8; --accent-contrast: #0d092a; }
+.dark { --background: #0b0724; --foreground: #f7f3ff; --surface: #181042; --surface-muted: #120b31; --line: rgba(247,243,255,.14); --muted: #b6add7; --accent: #23d7ff; --accent-strong: #f5d35f; --accent-contrast: #0b0724; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { min-height: 100vh; background: var(--background); color: var(--foreground); text-rendering: optimizeLegibility; transition: background-color 280ms ease, color 280ms ease; }
+::selection { background: var(--accent); color: var(--accent-contrast); }
+a { color: inherit; }
+.site-shell { background: var(--background); }
+.surface { background: var(--surface); border-color: var(--line); }
+.surface-muted { background: var(--surface-muted); }
+.text-muted { color: var(--muted); }
+.border-theme { border-color: var(--line); }
+.section-label { color: var(--accent-strong); font-size: .72rem; font-weight: 800; letter-spacing: .22em; text-transform: uppercase; }
+.accent-gradient { background: linear-gradient(120deg, #f5d35f 0%, #ffbf64 38%, #d56cff 68%, #23d7ff 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.hero-grid { background-image: linear-gradient(rgba(112,91,255,.16) 1px, transparent 1px), linear-gradient(90deg, rgba(35,215,255,.12) 1px, transparent 1px); background-size: 44px 44px; mask-image: linear-gradient(to bottom, black, transparent 85%); }
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity 700ms ease, transform 700ms cubic-bezier(.2,.7,.2,1); }
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+.float-slow { animation: float-slow 7s ease-in-out infinite; }
+@keyframes float-slow { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } .reveal { opacity: 1; transform: none; } }
