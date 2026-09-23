@@ -1,4 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
+import { useLanguage } from "../context/LanguageContext";
 
 const skills = [
   "Next.js",
@@ -15,31 +16,16 @@ const skills = [
   "DevOps",
 ];
 
-const experience = [
-  {
-    period: "2026 — aujourd'hui",
-    role: "Full Stack Developer",
-    company: "Logicat",
-    text: "Conception de solutions web modernes avec un focus sur la qualité, l'intégration, l'automatisation et la mise en production de projets à forte valeur métier.",
-  },
-  {
-    period: "2024 — 2025",
-    role: "Projets web & e-commerce",
-    company: "Indépendant",
-    text: "Création de plateformes, dashboards et expériences storefront avec React, Next.js, Laravel et Shopify, en travaillant directement avec les besoins business et les contraintes UX.",
-  },
-];
-
 export default function Skils() {
+  const { t } = useLanguage();
+
   return (
     <section id="EXPERIENCES" className="px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
       <div className="mx-auto grid max-w-7xl gap-16 lg:grid-cols-[0.85fr_1.15fr]">
         <div className="reveal">
-          <p className="section-label">Expérience & skills</p>
-          <h2 className="mt-4 text-4xl font-black tracking-[-0.04em] sm:text-5xl">Un profil hybride, du produit au code.</h2>
-          <p className="text-muted mt-5 max-w-xl leading-7">
-            Je peux parler interface avec un designer, architecture avec des équipes techniques et objectifs avec des décideurs métier. Le but reste le même : livrer un produit utile, propre et efficace.
-          </p>
+          <p className="section-label">{t.experience.label}</p>
+          <h2 className="mt-4 text-4xl font-black tracking-[-0.04em] sm:text-5xl">{t.experience.title}</h2>
+          <p className="text-muted mt-5 max-w-xl leading-7">{t.experience.subtitle}</p>
 
           <div className="mt-9 flex flex-wrap gap-2">
             {skills.map((skill) => (
@@ -51,8 +37,8 @@ export default function Skils() {
         </div>
 
         <div className="reveal space-y-4" style={{ transitionDelay: "120ms" }}>
-          {experience.map((item) => (
-            <article key={item.company} className="surface rounded-[1.5rem] border p-6 sm:p-7">
+          {t.experience.items.map((item) => (
+            <article key={item.company + item.period} className="surface rounded-[1.5rem] border p-6 sm:p-7">
               <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
                 <div>
                   <p className="text-lg font-extrabold text-[#0d092a] dark:text-white">{item.role}</p>
@@ -70,7 +56,7 @@ export default function Skils() {
             rel="noreferrer"
             className="inline-flex items-center gap-2 pt-2 text-sm font-extrabold text-[#8c72ff] transition hover:gap-3"
           >
-            Voir le profil GitHub
+            {t.experience.github}
             <ArrowUpRight className="h-4 w-4" />
           </a>
         </div>

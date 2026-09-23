@@ -1,2 +1,18 @@
 import { Github, Linkedin } from "lucide-react";
-export default function Footer() { return <footer className="bg-[#0b0724] px-5 py-8 text-white sm:px-8 lg:px-12"><div className="mx-auto flex max-w-7xl flex-col gap-5 border-t border-white/10 pt-7 text-sm text-white/60 sm:flex-row sm:items-center sm:justify-between"><p>© {new Date().getFullYear()} Abdelmounaim Elabiade. Construit avec intention.</p><div className="flex items-center gap-4"><a href="https://www.linkedin.com/in/abdelmounaim-elabiade/" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="transition hover:text-[#f5d35f]"><Linkedin className="h-4 w-4" /></a><a href="https://github.com/Abdelmounaim08" target="_blank" rel="noreferrer" aria-label="GitHub" className="transition hover:text-[#f5d35f]"><Github className="h-4 w-4" /></a></div></div></footer>; }
+import { useLanguage } from "../context/LanguageContext";
+
+export default function Footer() {
+  const { t } = useLanguage();
+
+  return (
+    <footer className="bg-[#0b0724] px-5 py-8 text-white sm:px-8 lg:px-12">
+      <div className="mx-auto flex max-w-7xl flex-col gap-5 border-t border-white/10 pt-7 text-sm text-white/60 sm:flex-row sm:items-center sm:justify-between">
+        <p>{t.footer.text.replace("{year}", String(new Date().getFullYear()))}</p>
+        <div className="flex items-center gap-4">
+          <a href="https://www.linkedin.com/in/abdelmounaim-elabiade/" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="transition hover:text-[#f5d35f]"><Linkedin className="h-4 w-4" /></a>
+          <a href="https://github.com/Abdelmounaim08" target="_blank" rel="noreferrer" aria-label="GitHub" className="transition hover:text-[#f5d35f]"><Github className="h-4 w-4" /></a>
+        </div>
+      </div>
+    </footer>
+  );
+}
