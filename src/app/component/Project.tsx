@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ArrowUpRight, Github, Sparkles } from "lucide-react";
+import { ArrowUpRight, Github } from "lucide-react";
 
 const projects = [
   {
@@ -94,8 +94,7 @@ const projects = [
 ];
 
 export default function Project() {
-  const featuredProject = projects[0];
-  const otherProjects = projects.slice(1);
+  const [featuredProject, ...otherProjects] = projects;
 
   return (
     <section
@@ -103,228 +102,149 @@ export default function Project() {
       className="relative overflow-hidden bg-[#0b0724] px-5 py-24 text-[#faf8ff] sm:px-8 lg:px-12 lg:py-32"
     >
       {/* Background decoration */}
-      <div className="pointer-events-none absolute left-[-15%] top-[20%] h-[500px] w-[500px] rounded-full bg-[#6c4cff]/10 blur-[140px]" />
-
-      <div className="pointer-events-none absolute bottom-[10%] right-[-10%] h-[400px] w-[400px] rounded-full bg-[#f5d35f]/5 blur-[120px]" />
+      <div className="pointer-events-none absolute left-[-15%] top-[15%] h-[520px] w-[520px] rounded-full bg-[#6c4cff]/10 blur-[150px]" />
+      <div className="pointer-events-none absolute bottom-[5%] right-[-10%] h-[420px] w-[420px] rounded-full bg-[#f5d35f]/5 blur-[130px]" />
 
       <div className="relative mx-auto max-w-7xl">
-
         {/* HEADER */}
-        <div className="reveal flex flex-col justify-between gap-8 md:flex-row md:items-end">
-          <div>
-            <div className="mb-5 flex items-center gap-3">
-              <span className="h-px w-8 bg-[#f5d35f]" />
+        <div className="reveal grid gap-8 md:grid-cols-[1.3fr_1fr] md:items-end">
+          <h2 className="text-4xl font-black leading-[0.98] tracking-[-0.04em] sm:text-5xl lg:text-[3.75rem]">
+            Huit projets, une seule exigence :{" "}
+            <span className="text-white/35">rendre le produit évident.</span>
+          </h2>
 
-              <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-[#f5d35f]">
-                Projets sélectionnés
-              </p>
-            </div>
-
-            <h2 className="max-w-3xl text-4xl font-black leading-[0.95] tracking-[-0.05em] sm:text-5xl lg:text-6xl">
-              Des produits digitaux
-              <br />
-              <span className="text-white/35">pensés pour fonctionner.</span>
-            </h2>
-          </div>
-
-          <div className="max-w-sm">
-            <p className="text-sm leading-7 text-[#aaa0d1]">
-              Une sélection de projets réalisés entre développement web,
-              e-commerce, WordPress et expériences digitales sur mesure.
-            </p>
-          </div>
+          <p className="text-sm leading-7 text-[#aaa0d1] md:border-l md:border-white/10 md:pl-8">
+            Une sélection de projets réalisés entre développement web,
+            e-commerce, WordPress et expériences digitales sur mesure — du
+            site vitrine à la plateforme SaaS.
+          </p>
         </div>
 
         {/* FEATURED PROJECT */}
-        <div className="reveal mt-16">
-          <article className="group relative overflow-hidden rounded-[28px] border border-white/10 bg-white/[0.045]">
-            
-            {/* Featured image */}
-            <div className="relative aspect-[16/9] overflow-hidden sm:aspect-[2/1] lg:aspect-[2.2/1]">
-              <Image
-                src={featuredProject.image}
-                alt={`Projet ${featuredProject.title}`}
-                fill
-                priority
-                sizes="100vw"
-                className="object-cover transition duration-1000 group-hover:scale-[1.03]"
-              />
+        <a
+          href={featuredProject.live}
+          target="_blank"
+          rel="noreferrer"
+          className="reveal group mt-14 grid overflow-hidden rounded-[28px] border border-white/10 bg-white/[0.04] transition-colors duration-300 hover:border-[#f5d35f]/30 lg:grid-cols-[1.3fr_1fr]"
+        >
+          <div className="relative aspect-[16/10] overflow-hidden sm:aspect-[16/9] lg:aspect-auto">
+            <Image
+              src={featuredProject.image}
+              alt={`Projet ${featuredProject.title}`}
+              fill
+              priority
+              sizes="(max-width: 1024px) 100vw, 60vw"
+              className="object-cover transition duration-700 group-hover:scale-[1.02]"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0b0724]/70 via-transparent to-transparent lg:bg-gradient-to-r" />
+          </div>
 
-              {/* overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0b0724] via-[#0b0724]/20 to-transparent" />
+          <div className="flex flex-col justify-between gap-6 p-7 sm:p-9 lg:p-10">
+            <div>
+              <p className="mb-3 text-xs font-semibold text-[#f5d35f]">
+                {featuredProject.category} — {featuredProject.type}
+              </p>
+              <h3 className="text-3xl font-black tracking-[-0.03em] sm:text-4xl">
+                {featuredProject.title}
+              </h3>
+              <p className="mt-4 max-w-md text-sm leading-7 text-[#b6add3]">
+                {featuredProject.description}
+              </p>
+            </div>
 
-              <div className="absolute left-5 top-5 flex items-center gap-2 sm:left-7 sm:top-7">
-                <span className="rounded-full border border-white/15 bg-[#0b0724]/70 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.15em] text-[#baf7ff] backdrop-blur-xl">
-                  Projet récent
-                </span>
-
-                <span className="rounded-full border border-white/10 bg-white/10 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.15em] text-white/70 backdrop-blur-xl">
-                  {featuredProject.category}
-                </span>
-              </div>
-
-              <div className="absolute bottom-5 left-5 right-5 sm:bottom-8 sm:left-8 sm:right-8">
-                <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
-                  <div>
-                    <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#f5d35f]">
-                      {featuredProject.type}
-                    </p>
-
-                    <h3 className="text-3xl font-black tracking-[-0.04em] sm:text-4xl lg:text-5xl">
-                      {featuredProject.title}
-                    </h3>
-                  </div>
-
-                  <a
-                    href={featuredProject.live}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex w-fit items-center gap-2 rounded-full bg-[#f5d35f] px-5 py-3 text-xs font-black text-[#0b0724] transition duration-300 hover:gap-3 hover:bg-white"
+            <div className="flex flex-wrap items-center justify-between gap-4">
+              <div className="flex flex-wrap gap-2">
+                {featuredProject.stack.map((tech) => (
+                  <span
+                    key={tech}
+                    className="rounded-full border border-white/10 px-3 py-1.5 text-xs font-medium text-white/70"
                   >
-                    Voir le projet
-                    <ArrowUpRight className="h-4 w-4" />
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            {/* Featured content */}
-            <div className="grid gap-8 p-6 sm:p-8 lg:grid-cols-[1.5fr_1fr] lg:p-10">
-              <div>
-                <div className="mb-4 flex items-center gap-2 text-[#f5d35f]">
-                  <Sparkles className="h-4 w-4" />
-
-                  <span className="text-xs font-bold uppercase tracking-[0.15em]">
-                    À propos du projet
+                    {tech}
                   </span>
-                </div>
-
-                <p className="max-w-2xl text-sm leading-7 text-[#b6add3] sm:text-base">
-                  {featuredProject.description}
-                </p>
+                ))}
               </div>
 
-              <div className="lg:border-l lg:border-white/10 lg:pl-8">
-                <p className="mb-4 text-[10px] font-bold uppercase tracking-[0.2em] text-white/40">
-                  Technologies
-                </p>
-
-                <div className="flex flex-wrap gap-2">
-                  {featuredProject.stack.map((tech) => (
-                    <span
-                      key={tech}
-                      className="rounded-full border border-white/10 bg-white/[0.05] px-3 py-1.5 text-xs font-semibold text-white/75"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
+              <span className="inline-flex items-center gap-2 text-sm font-bold text-[#f5d35f] transition-transform duration-300 group-hover:translate-x-1">
+                Voir le projet
+                <ArrowUpRight className="h-4 w-4" />
+              </span>
             </div>
-          </article>
-        </div>
+          </div>
+        </a>
 
         {/* OTHER PROJECTS */}
         <div className="mt-6 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {otherProjects.map((project, index) => (
-            <article
+          {otherProjects.map((project) => (
+            <a
               key={project.title}
-              className="reveal group overflow-hidden rounded-[22px] border border-white/10 bg-white/[0.04] transition duration-500 hover:-translate-y-1 hover:border-[#f5d35f]/40 hover:bg-white/[0.07]"
-              style={{
-                transitionDelay: `${index * 70}ms`,
-              }}
+              href={project.live}
+              target="_blank"
+              rel="noreferrer"
+              className="reveal group flex flex-col overflow-hidden rounded-[20px] border border-white/10 bg-white/[0.035] transition-colors duration-300 hover:border-[#f5d35f]/30"
             >
-              {/* Image */}
-              <div className="relative aspect-[1.5/1] overflow-hidden bg-[#21155a]">
+              <div className="relative aspect-[3/2] overflow-hidden bg-[#1a1240]">
                 <Image
                   src={project.image}
                   alt={`Capture du projet ${project.title}`}
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className="object-cover transition duration-700 group-hover:scale-105"
+                  className="object-cover transition duration-500 group-hover:scale-[1.04]"
                 />
-
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0b0724]/80 via-transparent to-transparent" />
-
-                <span className="absolute left-4 top-4 rounded-full border border-white/15 bg-[#0b0724]/75 px-3 py-1.5 text-[9px] font-bold uppercase tracking-[0.15em] text-[#baf7ff] backdrop-blur-xl">
-                  {project.category}
-                </span>
-
-                <a
-                  href={project.live}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label={`Voir ${project.title}`}
-                  className="absolute bottom-4 right-4 flex h-10 w-10 translate-y-2 items-center justify-center rounded-full bg-[#f5d35f] text-[#0b0724] opacity-0 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100"
-                >
-                  <ArrowUpRight className="h-4 w-4" />
-                </a>
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0b0724]/70 via-transparent to-transparent" />
               </div>
 
-              {/* Content */}
-              <div className="p-5">
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <p className="mb-1 text-[10px] font-bold uppercase tracking-[0.18em] text-[#f5d35f]">
-                      {project.type}
-                    </p>
-
-                    <h3 className="text-xl font-extrabold tracking-[-0.02em]">
-                      {project.title}
-                    </h3>
-                  </div>
-                </div>
-
-                <p className="mt-3 min-h-[84px] text-sm leading-6 text-[#aaa0d1]">
+              <div className="flex flex-1 flex-col p-6">
+                <p className="text-xs font-semibold text-[#f5d35f]">
+                  {project.category}
+                </p>
+                <h3 className="mt-1.5 text-xl font-extrabold tracking-[-0.02em]">
+                  {project.title}
+                </h3>
+                <p className="mt-3 flex-1 text-sm leading-6 text-[#aaa0d1]">
                   {project.description}
                 </p>
 
-                {/* Stack */}
                 <div className="mt-5 flex flex-wrap gap-1.5">
                   {project.stack.map((tech) => (
                     <span
                       key={tech}
-                      className="rounded-full bg-white/[0.07] px-2.5 py-1 text-[9px] font-bold text-white/65"
+                      className="rounded-full bg-white/[0.06] px-2.5 py-1 text-[11px] font-medium text-white/60"
                     >
                       {tech}
                     </span>
                   ))}
                 </div>
 
-                {/* Links */}
-                <div className="mt-6 flex items-center gap-4 border-t border-white/10 pt-4">
-                  <a
-                    href={project.live}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#f5d35f] transition-all hover:gap-2.5"
-                  >
+                <div className="mt-5 flex items-center justify-between border-t border-white/10 pt-4">
+                  <span className="inline-flex items-center gap-1.5 text-xs font-bold text-[#f5d35f] transition-transform duration-300 group-hover:translate-x-1">
                     Voir le projet
                     <ArrowUpRight className="h-3.5 w-3.5" />
-                  </a>
+                  </span>
 
                   {project.github && (
                     <a
                       href={project.github}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center gap-1.5 text-xs font-bold text-white/50 transition hover:text-white"
+                      onClick={(e) => e.stopPropagation()}
+                      className="inline-flex items-center gap-1.5 text-xs font-medium text-white/45 transition hover:text-white"
                     >
                       <Github className="h-3.5 w-3.5" />
-                      GitHub
+                      Code
                     </a>
                   )}
                 </div>
               </div>
-            </article>
+            </a>
           ))}
         </div>
 
         {/* Bottom statement */}
         <div className="reveal mt-16 flex flex-col items-start justify-between gap-5 border-t border-white/10 pt-8 sm:flex-row sm:items-center">
           <p className="max-w-xl text-sm leading-6 text-white/40">
-            Chaque projet répond à un contexte différent, avec le même objectif :
-            créer une expérience claire, performante et facile à utiliser.
+            Chaque projet répond à un contexte différent, avec le même
+            objectif : créer une expérience claire, performante et facile à
+            utiliser.
           </p>
 
           <a

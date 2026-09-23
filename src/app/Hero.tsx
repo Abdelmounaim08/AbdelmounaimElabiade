@@ -29,7 +29,7 @@ export function Hero() {
             <span className="ml-3 text-[#d2cbed]/80">Logicat</span>
           </div>
 
-          <h1 className="max-w-4xl text-4xl font-black leading-[0.98] tracking-[-0.055em] sm:text-4xl lg:text-[4.25rem]">
+          <h1 className="max-w-4xl text-3xl font-black leading-[1.1] tracking-[-0.04em] sm:text-4xl lg:text-[3.5rem]">
             {t.hero.title}
           </h1>
 
