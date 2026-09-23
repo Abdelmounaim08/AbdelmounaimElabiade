@@ -1,5 +1,97 @@
 "use client";
-import Image from "next/image";
-import { ArrowDownRight, Download, CheckCircle2, Sparkles } from "lucide-react";
-const stack = ["Next.js", "React", "TypeScript", "Node.js", "Laravel", "Tailwind CSS"];
-export function Hero() { return <section id="home" className="relative isolate overflow-hidden bg-[#0b0724] px-5 pb-20 pt-32 text-[#faf8ff] sm:px-8 lg:min-h-[min(900px,100vh)] lg:px-12 lg:pb-28 lg:pt-44"><div className="hero-grid pointer-events-none absolute inset-0 opacity-60" /><div className="pointer-events-none absolute -right-32 top-24 h-80 w-80 rounded-full bg-[#23d7ff]/10 blur-3xl" /><div className="pointer-events-none absolute bottom-0 left-0 h-72 w-72 rounded-full bg-[#725cff]/10 blur-3xl" /><div className="relative mx-auto grid max-w-7xl items-center gap-14 lg:grid-cols-[1.1fr_.9fr] lg:gap-20"><div className="reveal"><div className="mb-7 inline-flex items-center gap-2 rounded-full border border-[#23d7ff]/30 bg-[#23d7ff]/10 px-3 py-2 text-xs font-bold uppercase tracking-[.16em] text-[#baf7ff]"><Sparkles className="h-3.5 w-3.5" />Full stack developer</div><h1 className="max-w-4xl text-5xl font-black leading-[.98] tracking-[-.055em] sm:text-6xl lg:text-8xl">Je construis des produits web <span className="accent-gradient">qui comptent.</span></h1><p className="mt-7 max-w-2xl text-base leading-8 text-[#d2cbed] sm:text-lg">Je m&apos;appelle Abdelmounaim. Je transforme des idées complexes en expériences simples, rapides et fiables — de l&apos;interface jusqu&apos;à l&apos;API.</p><div className="mt-8 flex flex-wrap items-center gap-4"><a href="#PROJECT" className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#23d7ff] to-[#b14cff] px-5 py-3.5 text-sm font-extrabold text-[#0d092a] transition hover:-translate-y-0.5 hover:from-[#52e7ff] hover:to-[#c86cff]">Voir mes projets <ArrowDownRight className="h-4 w-4" /></a><a href="#CONTACT" className="inline-flex items-center gap-2 rounded-full border border-white/20 px-5 py-3.5 text-sm font-bold text-white transition hover:border-[#f5d35f]/70 hover:text-[#72efff]">Travaillons ensemble</a></div><div className="mt-8 flex items-center gap-3 text-sm text-[#d2cbed]"><span className="relative flex h-3 w-3"><span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#f5d35f] opacity-60" /><span className="relative inline-flex h-3 w-3 rounded-full bg-[#f5d35f]" /></span>Disponible pour une nouvelle opportunité</div><div className="mt-10 flex flex-wrap gap-2">{stack.map((tech) => <span key={tech} className="rounded-full border border-white/10 bg-white/[.06] px-3 py-1.5 text-xs font-medium text-[#e0dbf0]">{tech}</span>)}</div></div><div className="reveal relative mx-auto w-full max-w-md lg:justify-self-end" style={{ transitionDelay: "140ms" }}><div className="absolute -inset-4 rounded-[2rem] border border-[#f5d35f]/20" /><div className="relative overflow-hidden rounded-[1.65rem] border border-white/15 bg-white/10 p-3 shadow-2xl shadow-black/40 backdrop-blur-sm"><div className="relative aspect-[4/5] overflow-hidden rounded-[1.2rem] bg-[#21155a]"><Image src="/image/profile.png" alt="Portrait professionnel d'Abdelmounaim Elabiade" fill priority sizes="(max-width: 1024px) 80vw, 36vw" className="object-cover object-center" /><div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#07051a] via-[#07051a]/70 to-transparent px-5 pb-5 pt-20"><p className="text-xs font-bold uppercase tracking-[.2em] text-[#f5d35f]">Based in Morocco</p><p className="mt-1 text-lg font-bold">Digital products, built with care.</p></div></div></div><div className="float-slow absolute -bottom-5 -left-5 rounded-2xl border border-white/15 bg-[#241557] px-4 py-3 shadow-xl"><div className="flex items-center gap-2 text-sm font-bold"><CheckCircle2 className="h-4 w-4 text-[#f5d35f]" /> Clean code, clear goals</div></div></div></div><a href="#ABOUT" className="absolute bottom-7 left-1/2 hidden -translate-x-1/2 items-center gap-2 text-xs font-bold uppercase tracking-[.2em] text-[#a49bbe] transition hover:text-[#f5d35f] lg:flex">Scroll to explore <Download className="h-4 w-4" /></a></section>; }
+import { ArrowDownRight, Sparkles } from "lucide-react";
+
+const stack = ["Next.js", "React", "TypeScript", "Node.js", "Laravel", "WordPress", "WooCommerce", "DevOps"];
+
+export function Hero() {
+  return (
+    <section
+      id="home"
+      className="relative isolate overflow-hidden bg-[#0b0724] px-5 pb-20 pt-32 text-[#faf8ff] sm:px-8 lg:min-h-[min(900px,100vh)] lg:px-12 lg:pb-28 lg:pt-44"
+    >
+      <div className="hero-grid pointer-events-none absolute inset-0 opacity-60" />
+      <div className="pointer-events-none absolute -right-32 top-24 h-80 w-80 rounded-full bg-[#23d7ff]/10 blur-3xl" />
+      <div className="pointer-events-none absolute bottom-0 left-0 h-72 w-72 rounded-full bg-[#725cff]/10 blur-3xl" />
+
+      <div className="relative mx-auto grid max-w-7xl items-center gap-14 lg:grid-cols-[1.08fr_.92fr] lg:gap-20">
+        <div className="reveal">
+          <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-[#23d7ff]/30 bg-[#23d7ff]/10 px-3 py-2 text-[10px] font-bold uppercase tracking-[0.18em] text-[#baf7ff]">
+            <Sparkles className="h-3.5 w-3.5" />
+            Full Stack Developer
+          </div>
+
+          <div className="mb-4 text-xs font-bold uppercase tracking-[0.2em] text-[#d2cbed] sm:text-sm">
+            ABDELMOUNAIM ELABIADE
+            <span className="ml-3 text-[#f5d35f]">·</span>
+            <span className="ml-3 text-[#d2cbed]/80">Logicat</span>
+          </div>
+
+          <h1 className="max-w-4xl text-5xl font-black leading-[0.98] tracking-[-0.055em] sm:text-6xl lg:text-[5.25rem]">
+            Je conçois des applications web modernes, des plateformes e-commerce et des solutions digitales de la conception au déploiement.
+          </h1>
+
+          <p className="mt-7 max-w-2xl text-base leading-8 text-[#d2cbed] sm:text-lg">
+            Je développe des expériences digitales utiles, performantes et durables pour les marques, les équipes internes et les projets à forte valeur métier.
+          </p>
+
+          <div className="mt-8 flex flex-wrap items-center gap-4">
+            <a
+              href="#PROJECT"
+              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#23d7ff] to-[#b14cff] px-5 py-3.5 text-sm font-extrabold text-[#0d092a] transition duration-300 hover:-translate-y-0.5 hover:from-[#52e7ff] hover:to-[#c86cff]"
+            >
+              Voir mes projets
+              <ArrowDownRight className="h-4 w-4" />
+            </a>
+            <a
+              href="#CONTACT"
+              className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-5 py-3.5 text-sm font-bold text-white transition duration-300 hover:border-[#f5d35f]/70 hover:text-[#72efff]"
+            >
+              Me contacter
+            </a>
+          </div>
+
+          <div className="mt-8 flex flex-wrap items-center gap-3 text-sm text-[#d2cbed]">
+            <span className="inline-flex items-center gap-2">
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#23d7ff]/60" />
+                <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-[#23d7ff]" />
+              </span>
+              Based in Morocco
+            </span>
+            <span className="text-[#8d86b9]">•</span>
+            <span>Available for international opportunities</span>
+          </div>
+        </div>
+
+        <div className="reveal relative" style={{ transitionDelay: "120ms" }}>
+          <div className="relative overflow-hidden rounded-[28px] border border-white/10 bg-white/[0.04] p-4 shadow-[0_30px_80px_rgba(16,10,42,0.42)]">
+            <div className="rounded-[22px] border border-white/10 bg-[#120d2e]/80 p-5">
+              <div className="flex items-center justify-between border-b border-white/10 pb-4 text-xs font-bold uppercase tracking-[0.18em] text-[#d2cbed]">
+                <span>Stack</span>
+                <span className="text-[#f5d35f]">Core</span>
+              </div>
+
+              <div className="mt-5 flex flex-wrap gap-2.5">
+                {stack.map((item) => (
+                  <span
+                    key={item}
+                    className="rounded-full border border-[#23d7ff]/20 bg-[#23d7ff]/8 px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.12em] text-[#d9f8ff]"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+
+              <div className="mt-7 rounded-2xl border border-[#f5d35f]/20 bg-[#f5d35f]/8 p-4">
+                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#f5d35f]">Approche</p>
+                <p className="mt-3 text-base font-semibold leading-7 text-[#f3f0ff]">
+                  Du concept au déploiement, avec simplicité, performance et fiabilité à chaque étape.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
