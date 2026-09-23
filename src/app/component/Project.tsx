@@ -1,4 +1,145 @@
 import Image from "next/image";
 import { ArrowUpRight, Github } from "lucide-react";
-const projects = [{ title: "ChargeGo", type: "Mobilité électrique", description: "Une plateforme claire pour présenter une offre de recharge et guider rapidement l'utilisateur vers la bonne solution.", image: "/image/chargego.png", stack: ["Next.js", "TypeScript", "Tailwind CSS"], live: "https://www.chargego.ma/", github: "https://github.com/Abdelmounaim08/charge-elevate-ecosystem" }, { title: "Al Jabr School", type: "Éducation", description: "Un écosystème éducatif avec une vitrine publique et des outils de gestion pour fluidifier l'expérience des équipes et des apprenants.", image: "/image/aljaber.png", stack: ["Next.js", "Laravel", "MySQL"], live: "https://ecolealjabr.com/", github: "https://github.com/Abdelmounaim08/Aljabr_Ecole" }, { title: "Cannabis Company", type: "Brand experience", description: "Un concept premium et responsive pour présenter une marque de manière éditoriale, immersive et cohérente sur mobile.", image: "/image/canabis.png", stack: ["Next.js", "Prisma", "Tailwind CSS"], live: "https://canabis-template.vercel.app/home", github: "https://github.com/Abdelmounaim08/Canabis-Template" }, { title: "Flink Marketplace", type: "E-commerce", description: "Une marketplace pensée autour du catalogue, des vendeurs, du paiement et des échanges en temps réel.", image: "/image/flink1.png", stack: ["Next.js", "Laravel", "Redis", "Stripe"], live: "https://flink.ma/", github: "https://github.com/Abdelmounaim08/FlinkApp" }, { title: "Theme Maestro", type: "Shopify app", description: "Un dashboard qui aide les marchands à planifier et automatiser les changements de thème Shopify selon leur calendrier.", image: "/image/themeMeastro1.png", stack: ["React", "Polaris", "GraphQL"], live: "https://apps.shopify.com/maestro-theme-scheduler", github: "https://github.com/Abdelmounaim08" }, { title: "Survey Upsell", type: "Product workflow", description: "Une expérience orientée conversion pour collecter un signal utile et l'intégrer dans un parcours post-achat.", image: "/image/Untitled.png", stack: ["React", "Node.js", "API integration"], live: "https://github.com/Abdelmounaim08/survey-upsell", github: "https://github.com/Abdelmounaim08/survey-upsell" }];
-export default function Project() { return <section id="PROJECT" className="bg-[#0b0724] px-5 py-24 text-[#faf8ff] sm:px-8 lg:px-12 lg:py-32"><div className="mx-auto max-w-7xl"><div className="reveal flex flex-col justify-between gap-6 md:flex-row md:items-end"><div><p className="section-label text-[#f5d35f]">Projets sélectionnés</p><h2 className="mt-4 max-w-2xl text-4xl font-black tracking-[-.04em] sm:text-5xl">Des expériences conçues pour être utilisées.</h2></div><p className="max-w-sm text-sm leading-7 text-[#aaa0d1]">Six cas d&apos;usage, une même exigence : rendre le produit évident dès la première interaction.</p></div><div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">{projects.map((project, index) => <article key={project.title} className="reveal group overflow-hidden rounded-2xl border border-white/10 bg-white/[.055] transition duration-500 hover:-translate-y-1 hover:border-[#f5d35f]/50" style={{ transitionDelay: index % 3 * 80 + "ms" }}><div className="relative aspect-[1.4/1] overflow-hidden bg-[#21155a]"><Image src={project.image} alt={"Capture du projet " + project.title} fill sizes="(max-width: 768px) 100vw, (max-width: 1280px) 33vw, 25vw" className="object-cover transition duration-700 group-hover:scale-105" /><div className="absolute inset-0 bg-gradient-to-t from-[#0b0724]/80 to-transparent opacity-70" /><span className="absolute left-4 top-4 rounded-full border border-white/20 bg-[#0b0724]/70 px-3 py-1 text-[10px] font-bold uppercase tracking-[.16em] text-[#baf7ff] backdrop-blur">{project.type}</span></div><div className="p-5"><h3 className="text-xl font-extrabold">{project.title}</h3><p className="mt-3 min-h-[72px] text-sm leading-6 text-[#b6add3]">{project.description}</p><div className="mt-4 flex flex-wrap gap-1.5">{project.stack.map((tech) => <span key={tech} className="rounded-full bg-white/10 px-2.5 py-1 text-[10px] font-bold text-[#d9d2ea]">{tech}</span>)}</div><div className="mt-6 flex items-center gap-4 border-t border-white/10 pt-4 text-xs font-bold"><a href={project.live} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 text-[#f5d35f] transition hover:gap-2.5">Voir le projet <ArrowUpRight className="h-3.5 w-3.5" /></a><a href={project.github} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 text-white/70 transition hover:text-white"><Github className="h-3.5 w-3.5" /> GitHub</a></div></div></article>)}</div></div></section>; }
+
+const projects = [
+  {
+    title: "ChargeGo",
+    type: "Mobilité électrique",
+    description: "Une plateforme claire pour présenter une offre de recharge et guider rapidement l'utilisateur vers la bonne solution.",
+    image: "/image/chargego.png",
+    stack: ["Next.js", "TypeScript", "Tailwind CSS"],
+    live: "https://www.chargego.ma/",
+    github: "https://github.com/Abdelmounaim08/charge-elevate-ecosystem",
+  },
+  {
+    title: "Al Jabr School",
+    type: "Éducation",
+    description: "Un écosystème éducatif avec une vitrine publique et des outils de gestion pour fluidifier l'expérience des équipes et des apprenants.",
+    image: "/image/aljaber.png",
+    stack: ["Next.js", "Laravel", "MySQL"],
+    live: "https://ecolealjabr.com/",
+    github: "https://github.com/Abdelmounaim08/Aljabr_Ecole",
+  },
+  {
+    title: "Cannabis Company",
+    type: "Brand experience",
+    description: "Un concept premium et responsive pour présenter une marque de manière éditoriale, immersive et cohérente sur mobile.",
+    image: "/image/canabis.png",
+    stack: ["Next.js", "Prisma", "Tailwind CSS"],
+    live: "https://canabis-template.vercel.app/home",
+    github: "https://github.com/Abdelmounaim08/Canabis-Template",
+  },
+  {
+    title: "Flink Marketplace",
+    type: "E-commerce",
+    description: "Une marketplace pensée autour du catalogue, des vendeurs, du paiement et des échanges en temps réel.",
+    image: "/image/flink1.png",
+    stack: ["Next.js", "Laravel", "Redis", "Stripe"],
+    live: "https://flink.ma/",
+    github: "https://github.com/Abdelmounaim08/FlinkApp",
+  },
+  {
+    title: "Theme Maestro",
+    type: "Shopify app",
+    description: "Un dashboard qui aide les marchands à planifier et automatiser les changements de thème Shopify selon leur calendrier.",
+    image: "/image/themeMeastro1.png",
+    stack: ["React", "Polaris", "GraphQL"],
+    live: "https://apps.shopify.com/maestro-theme-scheduler",
+    github: "https://github.com/Abdelmounaim08",
+  },
+  {
+    title: "CoworkPro",
+    type: "Coworking",
+    description: "Un site de réservation et de présentation d'espaces de travail flexible à Meknès, avec une expérience premium orientée conversion.",
+    image: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=80",
+    stack: ["Next.js", "TypeScript", "Tailwind CSS"],
+    live: "https://www.coworkpro.ma/new-home-2/",
+    github: "",
+  },
+  {
+    title: "Logicat AR",
+    type: "Arabic experience",
+    description: "Une interface orientée marché arabe avec un storytelling clair, un parcours de confiance et une proposition locale forte.",
+    image: "/image/logicat.png",
+    stack: ["Next.js", "React", "TypeScript"],
+    live: "https://ar.logicat.ma/",
+    github: "",
+  },
+  {
+    title: "Mecainfo",
+    type: "SaaS & repair",
+    description: "Une plateforme de service pour réparateurs, pensée pour organiser les informations, les offres et les parcours de conversion.",
+    image: "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=1200&q=80",
+    stack: ["React", "TypeScript", "Node.js", "API"],
+    live: "https://www.mecainfo.com/",
+    github: "",
+  },
+];
+
+export default function Project() {
+  return (
+    <section id="PROJECT" className="bg-[#0b0724] px-5 py-24 text-[#faf8ff] sm:px-8 lg:px-12 lg:py-32">
+      <div className="mx-auto max-w-7xl">
+        <div className="reveal flex flex-col justify-between gap-6 md:flex-row md:items-end">
+          <div>
+            <p className="section-label text-[#f5d35f]">Projets sélectionnés</p>
+            <h2 className="mt-4 max-w-2xl text-4xl font-black tracking-[-.04em] sm:text-5xl">Des expériences conçues pour être utilisées.</h2>
+          </div>
+          <p className="max-w-sm text-sm leading-7 text-[#aaa0d1]">Huit cas d&apos;usage, une même exigence : rendre le produit évident dès la première interaction.</p>
+        </div>
+
+        <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {projects.map((project, index) => (
+            <article
+              key={project.title}
+              className="reveal group overflow-hidden rounded-2xl border border-white/10 bg-white/[.055] transition duration-500 hover:-translate-y-1 hover:border-[#f5d35f]/50"
+              style={{ transitionDelay: index % 3 * 80 + "ms" }}
+            >
+              <div className="relative aspect-[1.4/1] overflow-hidden bg-[#21155a]">
+                <Image
+                  src={project.image}
+                  alt={"Capture du projet " + project.title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1280px) 33vw, 25vw"
+                  className="object-cover transition duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0b0724]/80 to-transparent opacity-70" />
+                <span className="absolute left-4 top-4 rounded-full border border-white/20 bg-[#0b0724]/70 px-3 py-1 text-[10px] font-bold uppercase tracking-[.16em] text-[#baf7ff] backdrop-blur">
+                  {project.type}
+                </span>
+              </div>
+
+              <div className="p-5">
+                <h3 className="text-xl font-extrabold">{project.title}</h3>
+                <p className="mt-3 min-h-[72px] text-sm leading-6 text-[#b6add3]">{project.description}</p>
+
+                <div className="mt-4 flex flex-wrap gap-1.5">
+                  {project.stack.map((tech) => (
+                    <span key={tech} className="rounded-full bg-white/10 px-2.5 py-1 text-[10px] font-bold text-[#d9d2ea]">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="mt-6 flex items-center gap-4 border-t border-white/10 pt-4 text-xs font-bold">
+                  <a href={project.live} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 text-[#f5d35f] transition hover:gap-2.5">
+                    Voir le projet
+                    <ArrowUpRight className="h-3.5 w-3.5" />
+                  </a>
+
+                  {project.github ? (
+                    <a href={project.github} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 text-white/70 transition hover:text-white">
+                      <Github className="h-3.5 w-3.5" />
+                      GitHub
+                    </a>
+                  ) : null}
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
