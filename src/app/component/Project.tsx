@@ -8,7 +8,7 @@ const projects = [
     category: "WordPress · Elementor",
     description:
       "Une expérience digitale en arabe pensée pour présenter les solutions de Logicat avec une navigation fluide, une identité forte et une interface adaptée au marché arabophone.",
-    image: "/image/logicat.png",
+    image: "/image/logicat-ar.png",
     stack: ["WordPress", "Elementor", "JavaScript"],
     live: "https://ar.logicat.ma/",
     github: "",
