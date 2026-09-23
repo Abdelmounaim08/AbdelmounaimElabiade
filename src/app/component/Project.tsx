@@ -4,7 +4,7 @@ import { ArrowUpRight, Github } from "lucide-react";
 const projects = [
   {
     title: "Logicat AR",
-    type: "Site vitrine",
+    type: "Site E-commerce",
     category: "WordPress · Elementor",
     description:
       "Une expérience digitale en arabe pensée pour présenter les solutions de Logicat avec une navigation fluide, une identité forte et une interface adaptée au marché arabophone.",
