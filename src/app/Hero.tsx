@@ -26,7 +26,7 @@ export function Hero() {
             <span className="ml-3 text-[#d2cbed]/80">Logicat</span>
           </div>
 
-          <h1 className="max-w-4xl text-5xl font-black leading-[0.98] tracking-[-0.055em] sm:text-6xl lg:text-[5.25rem]">
+          <h1 className="max-w-4xl text-3xl font-black leading-[0.98] tracking-[-0.055em] sm:text-6xl lg:text-[5.25rem]">
             Je conçois des applications web modernes, des plateformes e-commerce et des solutions digitales de la conception au déploiement.
           </h1>
 
