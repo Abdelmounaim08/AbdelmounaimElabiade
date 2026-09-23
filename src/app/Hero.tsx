@@ -1,7 +1,8 @@
 "use client";
 import { ArrowDownRight, Sparkles } from "lucide-react";
 
-const stack = ["Next.js", "React", "TypeScript", "Node.js", "Laravel", "WordPress", "WooCommerce", "DevOps"];
+const stack = ["Next.js", "React", "TypeScript", "Node.js", "Laravel", "WordPress", "WooCommerce", "DevOps", "Tailwind CSS", "Shopify", "GraphQL", "Prisma", "MySQL", "N8N", "Stripe",]
+;
 
 export function Hero() {
   return (

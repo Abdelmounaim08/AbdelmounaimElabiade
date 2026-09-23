@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-const facts = [["6+", "technologies cœur"], ["6", "projets présentés"], ["1", "vision produit"]];
+const facts = [["6+", "technologies cœur"], ["10", "projets présentés"], ["1", "vision produit"]];
 const focus = [
   "Full Stack Development",
   "E-commerce",
@@ -9,6 +9,9 @@ const focus = [
   "DevOps",
   "Automation",
   "UI/UX",
+  "Performance",
+  "automatisation",
+  
 ];
 
 export default function About() {
@@ -19,7 +22,7 @@ export default function About() {
           <div className="absolute -bottom-5 -right-5 h-full w-full rounded-[1.5rem] border border-[#23d7ff]/35" />
           <div className="relative aspect-[4/5] overflow-hidden rounded-[1.5rem] bg-[#dce9df] dark:bg-[#21155a]">
             <Image
-              src="/image/profile.png"
+              src="/image/hero.png"
               alt="Abdelmounaim Elabiade, développeur full stack"
               fill
               sizes="(max-width: 1024px) 80vw, 30vw"
