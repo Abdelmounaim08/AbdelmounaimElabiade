@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "./context/LanguageContext";
+import ThemeProvider from "../components/ThemeProvider";
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://abdelmounaim-elabiade.vercel.app";
@@ -25,7 +26,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="fr" suppressHydrationWarning>
       <body className={inter.className}>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
-        <LanguageProvider>{children}</LanguageProvider>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <LanguageProvider>{children}</LanguageProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

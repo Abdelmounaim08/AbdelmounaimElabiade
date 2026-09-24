@@ -4,9 +4,9 @@ import { useLanguage } from "../context/LanguageContext";
 
 const showTestimonials = false;
 const testimonials = [
-  { fr: "[À COMPLÉTER : témoignage client]", en: "[TO COMPLETE: client testimonial]" },
-  { fr: "[À COMPLÉTER : témoignage client]", en: "[TO COMPLETE: client testimonial]" },
-  { fr: "[À COMPLÉTER : témoignage client]", en: "[TO COMPLETE: client testimonial]" },
+  { fr: "Témoignage client à publier prochainement.", en: "Client testimonial to be published soon." },
+  { fr: "Retour client à publier prochainement.", en: "Client feedback to be published soon." },
+  { fr: "Avis client à publier prochainement.", en: "Client review to be published soon." },
 ];
 
 export default function Testimonials() {
