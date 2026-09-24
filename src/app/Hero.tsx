@@ -11,6 +11,33 @@ const heroTechnologies = [
   { name: "Tailwind CSS", delay: "1.8s", secondary: true },
 ];
 
+const stack = [
+  "React",
+  "Next.js",
+  "Laravel",
+  "WordPress",
+  "Elementor",
+  "Tailwind CSS",
+  "Node.js",
+  "Remix",
+  "Shopify",
+  "Polaris",
+  "HTML5",
+  "jQuery",
+  "n8n",
+  "Automation",
+  "Python",
+  "MCP",
+  "MySQL",
+  "Prisma",
+  "REST",
+  "n8n",
+  "GraphQL",
+  "Livewire",
+  "Remix JS",
+  "API",
+];
+
 export function Hero() {
   const { t } = useLanguage();
 
@@ -25,6 +52,9 @@ export function Hero() {
 
       <div className="relative mx-auto grid max-w-7xl items-center gap-14 lg:grid-cols-[1.08fr_.92fr] lg:gap-20">
         <div className="reveal">
+          <p className="mb-4 text-xs font-bold uppercase tracking-[0.24em] text-[var(--hero-muted)] sm:text-sm">
+            {t.hero.name}
+          </p>
           <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-[#23d7ff]/30 bg-[#23d7ff]/10 px-3 py-2 text-[10px] font-bold uppercase tracking-[0.18em] text-[var(--hero-fg)]">
             <Sparkles className="h-3.5 w-3.5" />
             {t.hero.badge}
@@ -84,7 +114,7 @@ export function Hero() {
               </div>
 
               <div className="mt-5 flex flex-wrap gap-2.5">
-                {["React", "Next.js", "Laravel", "WordPress", "Elementor", "Tailwind CSS"].map((item) => (
+                {stack.map((item) => (
                   <span
                     key={item}
                     className="rounded-full border border-[#23d7ff]/20 bg-[#23d7ff]/8 px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.12em] text-[var(--hero-fg)]"
