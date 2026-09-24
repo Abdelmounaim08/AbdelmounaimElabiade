@@ -21,8 +21,7 @@ type TranslationSet = {
     secondaryCta: string;
     based: string;
     available: string;
-    approachLabel: string;
-    approachText: string;
+    cv: string;
   };
   about: {
     label: string;
@@ -55,6 +54,7 @@ type TranslationSet = {
       role: string;
       company: string;
       text: string;
+      achievements: string[];
     }>;
   };
   projects: {
@@ -62,6 +62,10 @@ type TranslationSet = {
     title: string;
     intro: string;
     cta: string;
+    role: string;
+    result: string;
+    concept: string;
+    code: string;
   };
   contact: {
     label: string;
@@ -73,6 +77,10 @@ type TranslationSet = {
     messagePlaceholder: string;
     submit: string;
     sent: string;
+    sending: string;
+    error: string;
+    whatsapp: string;
+    honeypot: string;
   };
   footer: {
     text: string;
@@ -89,16 +97,15 @@ const translationSets: Record<Language, TranslationSet> = {
       contact: "Contact",
     },
     hero: {
-      badge: "Full Stack Developer",
+      badge: "Full Stack Developer · Logicat",
       name: "ABDELMOUNAIM ELABIADE",
-      title: "Je conçois des applications web modernes, des plateformes e-commerce et des solutions digitales de la conception au déploiement.",
-      subtitle: "Je développe des expériences digitales utiles, performantes et durables pour les marques, les équipes internes et les projets à forte valeur métier.",
+      title: "Je transforme vos idées en produits web performants.",
+      subtitle: "Développeur Full Stack au Maroc. Next.js, Laravel, WooCommerce et Shopify, du prototype à la production.",
       primaryCta: "Voir mes projets",
       secondaryCta: "Me contacter",
       based: "Basé au Maroc",
       available: "Disponible pour des missions internationales",
-      approachLabel: "Approche",
-      approachText: "Du concept au déploiement, avec simplicité, performance et fiabilité à chaque étape.",
+      cv: "Télécharger mon CV",
     },
     about: {
       label: "À propos",
@@ -107,12 +114,12 @@ const translationSets: Record<Language, TranslationSet> = {
       paragraph2: "Mon expérience couvre le développement frontend et backend, WordPress/WooCommerce, intégration d'API, déploiement et automatisation. J'aime concevoir des produits clairs, performants et faciles à utiliser, avec un vrai sens du business et de la valeur utilisateur.",
       chips: ["Full Stack Development", "E-commerce", "WordPress / WooCommerce", "APIs", "DevOps", "Automation", "UI/UX"],
       stats: [
-        { value: "6+", label: "technologies cœur" },
-        { value: "6", label: "projets présentés" },
+        { value: "8", label: "projets livrés" },
+        { value: "[X]+", label: "ans d'expérience" },
         { value: "1", label: "vision produit" },
       ],
-      chip1: "Based in Morocco",
-      chip2: "Available for international opportunities",
+      chip1: "Développement Full Stack",
+      chip2: "Disponible à l'international",
     },
     services: {
       label: "Expertise",
@@ -121,25 +128,25 @@ const translationSets: Record<Language, TranslationSet> = {
       items: [
         {
           number: "01",
-          title: "Full Stack Development",
+          title: "Développement Full Stack",
           text: "React, Next.js, TypeScript, Node.js et Laravel pour des applications web modernes, scalables et pensées pour l'utilisateur.",
           techs: ["React", "Next.js", "TypeScript", "Node.js", "Laravel"],
         },
         {
           number: "02",
           title: "E-commerce",
-          text: "Solution storefront, catalogues, paiements, intégrations et experiences conversionnelles orientées performances et revenus.",
+          text: "Vitrines e-commerce sur mesure, catalogues, paiements et intégrations orientés performance et revenus.",
           techs: ["WooCommerce", "Shopify", "APIs", "Paiements", "Catalogues"],
         },
         {
           number: "03",
-          title: "Web Platforms",
+          title: "Plateformes web",
           text: "Dashboards, outils internes, applications métier et plateformes de gestion avec architecture claire et interfaces puissantes.",
           techs: ["Dashboards", "Applications", "APIs", "Intégrations"],
         },
         {
           number: "04",
-          title: "Automation & Deployment",
+          title: "Automatisation & déploiement",
           text: "Automatisation d'environnements, déploiement fiable, observabilité et optimisation continue en production.",
           techs: ["n8n", "VPS", "Cloudflare", "CI/CD", "Automation"],
         },
@@ -156,12 +163,14 @@ const translationSets: Record<Language, TranslationSet> = {
           role: "Full Stack Developer",
           company: "Logicat",
           text: "Conception de solutions web modernes avec un focus sur la qualité, l'intégration, l'automatisation et la mise en production de projets à forte valeur métier.",
+          achievements: ["[À COMPLÉTER] projets livrés en production", "[À COMPLÉTER] automatisations déployées", "[À COMPLÉTER] amélioration mesurable"],
         },
         {
           period: "2024 — 2025",
           role: "Projets web & e-commerce",
           company: "Indépendant",
-          text: "Création de plateformes, dashboards et expériences storefront avec React, Next.js, Laravel et Shopify, en travaillant directement avec les besoins business et les contraintes UX.",
+          text: "Création de plateformes, tableaux de bord et vitrines e-commerce avec React, Next.js, Laravel et Shopify, en travaillant directement avec les besoins business et les contraintes UX.",
+          achievements: ["[À COMPLÉTER] plateformes réalisées", "[À COMPLÉTER] boutiques mises en ligne", "[À COMPLÉTER] satisfaction ou conversion"],
         },
       ],
     },
@@ -170,17 +179,25 @@ const translationSets: Record<Language, TranslationSet> = {
       title: "Des expériences conçues pour être utilisées.",
       intro: "Huit cas d'usage, une même exigence : rendre le produit évident dès la première interaction.",
       cta: "Voir le projet",
+      role: "Rôle",
+      result: "Résultat",
+      concept: "Concept design",
+      code: "Code",
     },
     contact: {
       label: "Contact",
       title: "Un projet en tête ? Parlons-en.",
-      text: "Une idée, une refonte ou un produit à lancer ? Décris-moi le contexte. Je te répondrai avec une première lecture concrète.",
+      text: "Une idée, une refonte ou un produit à lancer ? Décrivez-moi le contexte. Je vous répondrai avec une première lecture concrète.",
       name: "Nom",
       email: "Email",
       message: "Message",
-      messagePlaceholder: "Parle-moi de ton projet...",
+      messagePlaceholder: "Parlez-moi de votre projet...",
       submit: "Envoyer le message",
-      sent: "Ton client email va s'ouvrir.",
+      sent: "Votre client email va s'ouvrir.",
+      sending: "Envoi en cours...",
+      error: "Vérifiez les champs puis réessayez.",
+      whatsapp: "Écrire sur WhatsApp",
+      honeypot: "Ne pas remplir ce champ",
     },
     footer: {
       text: "© {year} Abdelmounaim Elabiade. Construit avec intention.",
@@ -197,14 +214,13 @@ const translationSets: Record<Language, TranslationSet> = {
     hero: {
       badge: "Full Stack Developer",
       name: "ABDELMOUNAIM ELABIADE",
-      title: "I design modern web applications, e-commerce platforms and digital solutions from concept to deployment.",
-      subtitle: "I build useful, fast and durable digital experiences for brands, internal teams and high-value digital products.",
-      primaryCta: "See my work",
+      title: "I turn your ideas into high-performing web products.",
+      subtitle: "Full Stack Developer based in Morocco. Next.js, Laravel, WooCommerce and Shopify, from prototype to production.",
+      primaryCta: "View my work",
       secondaryCta: "Contact me",
       based: "Based in Morocco",
-      available: "Available for international opportunities",
-      approachLabel: "Approach",
-      approachText: "From concept to deployment, with clarity, performance and reliability at every step.",
+      available: "Available for international projects",
+      cv: "Download my CV",
     },
     about: {
       label: "About",
@@ -213,12 +229,12 @@ const translationSets: Record<Language, TranslationSet> = {
       paragraph2: "My experience covers frontend and backend development, WordPress/WooCommerce, API integration, deployment and automation. I like to design clear, fast and easy-to-use products with a real business mindset and user value.",
       chips: ["Full Stack Development", "E-commerce", "WordPress / WooCommerce", "APIs", "DevOps", "Automation", "UI/UX"],
       stats: [
-        { value: "6+", label: "core technologies" },
-        { value: "6", label: "projects showcased" },
+        { value: "8", label: "projects delivered" },
+        { value: "[X]+", label: "years of experience" },
         { value: "1", label: "product vision" },
       ],
-      chip1: "Based in Morocco",
-      chip2: "Available for international opportunities",
+      chip1: "Full Stack Development",
+      chip2: "Available internationally",
     },
     services: {
       label: "Expertise",
@@ -234,7 +250,7 @@ const translationSets: Record<Language, TranslationSet> = {
         {
           number: "02",
           title: "E-commerce",
-          text: "Storefront solutions, catalogs, payments, integrations and conversion-focused experiences built for performance and revenue.",
+          text: "Custom e-commerce storefronts, catalogs, payments and integrations built for performance and revenue.",
           techs: ["WooCommerce", "Shopify", "APIs", "Payments", "Catalogs"],
         },
         {
@@ -262,12 +278,14 @@ const translationSets: Record<Language, TranslationSet> = {
           role: "Full Stack Developer",
           company: "Logicat",
           text: "Designing modern web solutions with a focus on quality, integration, automation and production delivery for high-value projects.",
+          achievements: ["[TO COMPLETE] projects delivered to production", "[TO COMPLETE] automations deployed", "[TO COMPLETE] measurable improvement"],
         },
         {
           period: "2024 — 2025",
           role: "Web & e-commerce projects",
           company: "Freelance",
-          text: "Creating platforms, dashboards and storefront experiences with React, Next.js, Laravel and Shopify, working directly on business needs and UX constraints.",
+          text: "Creating platforms, dashboards and custom e-commerce storefronts with React, Next.js, Laravel and Shopify, working directly on business needs and UX constraints.",
+          achievements: ["[TO COMPLETE] platforms delivered", "[TO COMPLETE] stores launched", "[TO COMPLETE] satisfaction or conversion"],
         },
       ],
     },
@@ -276,17 +294,25 @@ const translationSets: Record<Language, TranslationSet> = {
       title: "Experiences designed to be used.",
       intro: "Eight use cases, one requirement: make the product obvious from the first interaction.",
       cta: "View project",
+      role: "Role",
+      result: "Result",
+      concept: "Concept design",
+      code: "Code",
     },
     contact: {
       label: "Contact",
       title: "Have a project in mind? Let’s talk.",
-      text: "An idea, a redesign or a product to launch? Describe the context and I’ll get back with a concrete initial perspective.",
+      text: "An idea, a redesign or a product to launch? Describe the context and I’ll get back to you with a concrete initial perspective.",
       name: "Name",
       email: "Email",
       message: "Message",
       messagePlaceholder: "Tell me about your project...",
       submit: "Send message",
       sent: "Your mail client will open.",
+      sending: "Sending...",
+      error: "Check the fields and try again.",
+      whatsapp: "Write on WhatsApp",
+      honeypot: "Leave this field empty",
     },
     footer: {
       text: "© {year} Abdelmounaim Elabiade. Built with intention.",

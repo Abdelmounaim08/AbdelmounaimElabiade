@@ -1,2 +1,2 @@
 import type { MetadataRoute } from "next";
-export default function sitemap(): MetadataRoute.Sitemap { const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://abdelmounaim.dev"; return [{ url: baseUrl, lastModified: new Date(), changeFrequency: "monthly", priority: 1 }]; }
+export default function sitemap(): MetadataRoute.Sitemap { const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://abdelmounaim-elabiade.vercel.app"; return [{ url: baseUrl, lastModified: new Date(), changeFrequency: "monthly", priority: 1 }]; }

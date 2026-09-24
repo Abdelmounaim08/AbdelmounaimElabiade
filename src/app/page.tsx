@@ -8,6 +8,8 @@ import Skils from "./component/Skils";
 import Project from "./component/Project";
 import ContactSection from "./component/ContactSection";
 import Footer from "./component/Footer";
+import Testimonials from "./component/Testimonials";
+import WhatsAppButton from "./component/WhatsAppButton";
 
 export default function Home() {
   useEffect(() => {
@@ -17,5 +19,5 @@ export default function Home() {
     elements.forEach((element) => observer.observe(element));
     return () => observer.disconnect();
   }, []);
-  return <div className="site-shell overflow-x-hidden"><Nav /><main><Hero /><About /><Service /><Skils /><Project /><ContactSection /></main><Footer /></div>;
+  return <div className="site-shell overflow-x-hidden"><Nav /><main><Hero /><About /><Service /><Skils /><Project /><Testimonials /><ContactSection /></main><Footer /><WhatsAppButton /></div>;
 }

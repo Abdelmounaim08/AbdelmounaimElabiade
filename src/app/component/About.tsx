@@ -5,7 +5,7 @@ export default function About() {
   const { t } = useLanguage();
 
   return (
-    <section id="ABOUT" className="px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
+    <section id="about" className="scroll-mt-24 px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
       <div className="mx-auto grid max-w-7xl items-center gap-14 lg:grid-cols-[0.78fr_1.22fr] lg:gap-24">
         <div className="reveal relative mx-auto w-full max-w-sm">
           <div className="absolute -bottom-5 -right-5 h-full w-full rounded-[1.5rem] border border-[#23d7ff]/35" />
@@ -14,6 +14,7 @@ export default function About() {
               src="/image/hero.png"
               alt="Abdelmounaim Elabiade, développeur full stack"
               fill
+              priority
               sizes="(max-width: 1024px) 80vw, 30vw"
               className="object-cover"
             />
@@ -49,14 +50,6 @@ export default function About() {
             ))}
           </div>
 
-          <div className="mt-6 flex flex-wrap items-center gap-3 text-sm text-[#1a1c35] dark:text-[#f5f1ff]">
-            <span className="inline-flex items-center rounded-full border border-[#f5d35f]/30 bg-[#f5d35f]/10 px-3 py-1.5 font-semibold text-[#6758e8] dark:text-[#f5d35f]">
-              {t.about.chip1}
-            </span>
-            <span className="inline-flex items-center rounded-full border border-[#23d7ff]/30 bg-[#23d7ff]/10 px-3 py-1.5 font-semibold text-[#0f2943] dark:text-[#baf7ff]">
-              {t.about.chip2}
-            </span>
-          </div>
         </div>
       </div>
     </section>

@@ -2,7 +2,7 @@
 import { ArrowDownRight, Sparkles } from "lucide-react";
 import { useLanguage } from "./context/LanguageContext";
 
-const stack = ["Next.js", "React", "TypeScript", "Node.js", "Laravel", "WordPress", "WooCommerce", "DevOps", "Tailwind CSS", "Shopify", "GraphQL", "Prisma", "MySQL", "N8N", "Stripe"];
+const stack = ["Next.js", "React", "TypeScript", "Node.js", "Laravel", "WordPress", "WooCommerce", "DevOps", "Tailwind CSS", "Shopify", "GraphQL", "Prisma", "MySQL", "n8n", "Stripe"];
 
 export function Hero() {
   const { t } = useLanguage();
@@ -23,13 +23,7 @@ export function Hero() {
             {t.hero.badge}
           </div>
 
-          <div className="mb-4 text-xs font-bold uppercase tracking-[0.2em] text-[#d2cbed] sm:text-sm">
-            {t.hero.name}
-            <span className="ml-3 text-[#f5d35f]">·</span>
-            <span className="ml-3 text-[#d2cbed]/80">Logicat</span>
-          </div>
-
-          <h1 className="max-w-4xl text-3xl font-black leading-[1.1] tracking-[-0.04em] sm:text-4xl lg:text-[3.5rem]">
+          <h1 className="max-w-4xl text-[clamp(2rem,8vw,3.5rem)] font-black leading-[1.06] tracking-[-0.04em]">
             {t.hero.title}
           </h1>
 
@@ -39,14 +33,14 @@ export function Hero() {
 
           <div className="mt-8 flex flex-wrap items-center gap-4">
             <a
-              href="#PROJECT"
+              href="#projects"
               className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#23d7ff] to-[#b14cff] px-5 py-3.5 text-sm font-extrabold text-[#0d092a] transition duration-300 hover:-translate-y-0.5 hover:from-[#52e7ff] hover:to-[#c86cff]"
             >
               {t.hero.primaryCta}
               <ArrowDownRight className="h-4 w-4" />
             </a>
             <a
-              href="#CONTACT"
+              href="#contact"
               className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-5 py-3.5 text-sm font-bold text-white transition duration-300 hover:border-[#f5d35f]/70 hover:text-[#72efff]"
             >
               {t.hero.secondaryCta}
@@ -71,7 +65,7 @@ export function Hero() {
             <div className="rounded-[22px] border border-white/10 bg-[#120d2e]/80 p-5">
               <div className="flex items-center justify-between border-b border-white/10 pb-4 text-xs font-bold uppercase tracking-[0.18em] text-[#d2cbed]">
                 <span>Stack</span>
-                <span className="text-[#f5d35f]">Core</span>
+                <span className="text-[#f5d35f]">Stack</span>
               </div>
 
               <div className="mt-5 flex flex-wrap gap-2.5">
@@ -85,12 +79,6 @@ export function Hero() {
                 ))}
               </div>
 
-              <div className="mt-7 rounded-2xl border border-[#f5d35f]/20 bg-[#f5d35f]/8 p-4">
-                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#f5d35f]">{t.hero.approachLabel}</p>
-                <p className="mt-3 text-base font-semibold leading-7 text-[#f3f0ff]">
-                  {t.hero.approachText}
-                </p>
-              </div>
             </div>
           </div>
         </div>

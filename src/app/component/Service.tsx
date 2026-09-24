@@ -5,7 +5,7 @@ export default function Service() {
   const { t } = useLanguage();
 
   return (
-    <section id="service" className="surface-muted border-y border-theme px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
+    <section id="services" className="scroll-mt-24 surface-muted border-y border-theme px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
       <div className="mx-auto max-w-7xl">
         <div className="reveal max-w-3xl">
           <p className="section-label">{t.services.label}</p>

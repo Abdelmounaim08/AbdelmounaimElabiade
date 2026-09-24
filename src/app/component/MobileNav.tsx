@@ -13,10 +13,10 @@ const MobileNav=({closeNav,nav}:Props)=> {
    <div className={`w-[100vw] h-[100vw] flex flex-col items-center justify-center pt-[10rem]`}>
              <div className="nav-link-mobile"><Link href="#home" onClick={closeNav}>HOME</Link></div>
              <div className="nav-link-mobile"><Link onClick={closeNav} href="#service">SERVICES</Link></div>
-             <div className="nav-link-mobile"><Link onClick={closeNav} href="#ABOUT">ABOUT</Link></div>
-             <div className="nav-link-mobile"><Link onClick={closeNav} href="#PROJECT">PROJECT</Link></div>
+             <div className="nav-link-mobile"><Link onClick={closeNav} href="#about">ABOUT</Link></div>
+             <div className="nav-link-mobile"><Link onClick={closeNav} href="#projects">PROJECT</Link></div>
           
-             <div className="nav-link-mobile"><Link onClick={closeNav} href="#CONTACT">CONTACT</Link></div>
+             <div className="nav-link-mobile"><Link onClick={closeNav} href="#contact">CONTACT</Link></div>
  </div>
  <div onClick={closeNav} 
  className="absolute

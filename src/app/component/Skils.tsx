@@ -11,7 +11,7 @@ const skills = [
   "WooCommerce",
   "Tailwind CSS",
   "Prisma",
-  "PostgreSQL",
+  "MySQL",
   "REST APIs",
   "DevOps",
 ];
@@ -20,7 +20,7 @@ export default function Skils() {
   const { t } = useLanguage();
 
   return (
-    <section id="EXPERIENCES" className="px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
+    <section id="experience" className="scroll-mt-24 px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
       <div className="mx-auto grid max-w-7xl gap-16 lg:grid-cols-[0.85fr_1.15fr]">
         <div className="reveal">
           <p className="section-label">{t.experience.label}</p>
@@ -47,6 +47,9 @@ export default function Skils() {
                 <span className="text-xs font-bold text-muted">{item.period}</span>
               </div>
               <p className="text-muted mt-5 max-w-xl text-sm leading-7">{item.text}</p>
+              <ul className="text-muted mt-4 list-disc space-y-2 pl-5 text-sm leading-6">
+                {item.achievements.map((achievement) => <li key={achievement}>{achievement}</li>)}
+              </ul>
             </article>
           ))}
 
