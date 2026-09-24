@@ -13,8 +13,8 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Invalid form" }, { status: 400 });
     }
     const apiKey = process.env.RESEND_API_KEY;
-    const from = process.env.CONTACT_FROM_EMAIL;
-    if (!apiKey || !from) {
+    const from = process.env.CONTACT_FROM_EMAIL ?? "Portfolio contact <onboarding@resend.dev>";
+    if (!apiKey) {
       return NextResponse.json({ error: "Email service is not configured" }, { status: 503 });
     }
 
