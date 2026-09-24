@@ -1,49 +1,21 @@
 "use client";
-import Image from "next/image";
-import dynamic from "next/dynamic";
 import { ArrowDownRight, Sparkles } from "lucide-react";
-import { useTheme } from "next-themes";
-import { useEffect, useRef, useState } from "react";
 import { useLanguage } from "./context/LanguageContext";
 
-const HeroCrystal = dynamic(() => import("../components/three/HeroCrystal"), { ssr: false });
-
-const stack = ["Next.js", "React", "TypeScript", "Node.js", "Laravel", "WordPress", "WooCommerce", "DevOps", "Tailwind CSS", "Shopify", "GraphQL", "Prisma", "MySQL", "n8n", "Stripe"];
+const heroTechnologies = [
+  { name: "React", delay: "0.8s" },
+  { name: "Next.js", delay: "1s" },
+  { name: "Laravel", delay: "1.2s" },
+  { name: "WordPress", delay: "1.4s" },
+  { name: "Elementor", delay: "1.6s", secondary: true },
+  { name: "Tailwind CSS", delay: "1.8s", secondary: true },
+];
 
 export function Hero() {
   const { t } = useLanguage();
-  const { resolvedTheme } = useTheme();
-  const heroRef = useRef<HTMLElement>(null);
-  const [visible, setVisible] = useState(false);
-  const [reducedMotion, setReducedMotion] = useState(false);
-  const [mobile, setMobile] = useState(false);
-  const [webgl, setWebgl] = useState(false);
-
-  useEffect(() => {
-    const mediaMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const mediaMobile = window.matchMedia("(max-width: 767px)");
-    const updateMedia = () => {
-      setReducedMotion(mediaMotion.matches);
-      setMobile(mediaMobile.matches);
-    };
-    updateMedia();
-    mediaMotion.addEventListener("change", updateMedia);
-    mediaMobile.addEventListener("change", updateMedia);
-
-    const canvas = document.createElement("canvas");
-    setWebgl(Boolean(canvas.getContext("webgl") || canvas.getContext("webgl2")));
-    const observer = new IntersectionObserver(([entry]) => setVisible(entry.isIntersecting), { threshold: 0.08 });
-    if (heroRef.current) observer.observe(heroRef.current);
-    return () => {
-      observer.disconnect();
-      mediaMotion.removeEventListener("change", updateMedia);
-      mediaMobile.removeEventListener("change", updateMedia);
-    };
-  }, []);
 
   return (
     <section
-      ref={heroRef}
       id="home"
       className="hero-section relative isolate overflow-hidden px-5 pb-20 pt-32 sm:px-8 lg:min-h-[min(900px,100vh)] lg:px-12 lg:pb-28 lg:pt-44"
     >
@@ -58,9 +30,17 @@ export function Hero() {
             {t.hero.badge}
           </div>
 
-          <h1 className="max-w-4xl text-[clamp(2rem,8vw,3.5rem)] font-black leading-[1.06] tracking-[-0.04em]">
-            {t.hero.title}
-          </h1>
+          <div className="hero-tech-layout max-w-4xl">
+            <div className="hero-tech-row">
+              {heroTechnologies.slice(0, 2).map((technology) => <TechnologyBadge key={technology.name} {...technology} />)}
+            </div>
+            <h1 className="mt-5 text-[clamp(2.4rem,9vw,4.8rem)] font-black leading-[0.98] tracking-[-0.055em]">
+              {t.hero.title}
+            </h1>
+            <div className="hero-tech-row hero-tech-row-bottom">
+              {heroTechnologies.slice(2).map((technology) => <TechnologyBadge key={technology.name} {...technology} />)}
+            </div>
+          </div>
 
           <p className="hero-muted mt-7 max-w-2xl text-base leading-8 sm:text-lg">
             {t.hero.subtitle}
@@ -96,13 +76,6 @@ export function Hero() {
         </div>
 
         <div className="reveal relative" style={{ transitionDelay: "120ms" }}>
-          <div className="pointer-events-none absolute inset-0 z-0 h-72 sm:h-80 lg:h-96" aria-hidden="true">
-            {webgl && !reducedMotion ? (
-              <HeroCrystal active={visible} dark={resolvedTheme !== "light"} mobile={mobile} />
-            ) : (
-              <Image src="/image/hero.png" alt="" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover opacity-20 mix-blend-screen" />
-            )}
-          </div>
           <div className="relative overflow-hidden rounded-[28px] border border-[var(--hero-line)] bg-[var(--hero-card)] p-4 shadow-[0_30px_80px_rgba(16,10,42,0.22)]">
             <div className="relative z-10 rounded-[22px] border border-[var(--hero-line)] bg-[var(--hero-soft)] p-5">
               <div className="hero-muted flex items-center justify-between border-b border-[var(--hero-line)] pb-4 text-xs font-bold uppercase tracking-[0.18em]">
@@ -111,7 +84,7 @@ export function Hero() {
               </div>
 
               <div className="mt-5 flex flex-wrap gap-2.5">
-                {stack.map((item) => (
+                {["React", "Next.js", "Laravel", "WordPress", "Elementor", "Tailwind CSS"].map((item) => (
                   <span
                     key={item}
                     className="rounded-full border border-[#23d7ff]/20 bg-[#23d7ff]/8 px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.12em] text-[var(--hero-fg)]"
@@ -127,4 +100,8 @@ export function Hero() {
       </div>
     </section>
   );
+}
+
+function TechnologyBadge({ name, delay, secondary = false }: { name: string; delay: string; secondary?: boolean }) {
+  return <span className={`hero-tech-badge ${secondary ? "hero-tech-secondary" : ""}`} style={{ "--hero-tech-delay": delay } as React.CSSProperties}>{name}</span>;
 }

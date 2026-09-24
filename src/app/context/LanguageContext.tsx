@@ -99,8 +99,8 @@ const translationSets: Record<Language, TranslationSet> = {
     hero: {
       badge: "Full Stack Developer · Logicat",
       name: "ABDELMOUNAIM ELABIADE",
-      title: "Je transforme vos idées en produits web performants.",
-      subtitle: "Développeur Full Stack au Maroc. Next.js, Laravel, WooCommerce et Shopify, du prototype à la production.",
+      title: "FULL STACK WEB DEVELOPER",
+      subtitle: "Je conçois et développe des applications web modernes, performantes et évolutives.",
       primaryCta: "Voir mes projets",
       secondaryCta: "Me contacter",
       based: "Basé au Maroc",
@@ -214,8 +214,8 @@ const translationSets: Record<Language, TranslationSet> = {
     hero: {
       badge: "Full Stack Developer",
       name: "ABDELMOUNAIM ELABIADE",
-      title: "I turn your ideas into high-performing web products.",
-      subtitle: "Full Stack Developer based in Morocco. Next.js, Laravel, WooCommerce and Shopify, from prototype to production.",
+      title: "FULL STACK WEB DEVELOPER",
+      subtitle: "I design and build modern, high-performing and scalable web applications.",
       primaryCta: "View my work",
       secondaryCta: "Contact me",
       based: "Based in Morocco",

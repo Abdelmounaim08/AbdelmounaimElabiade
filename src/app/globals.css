@@ -19,6 +19,14 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 .section-label { color: var(--accent-strong); font-size: .72rem; font-weight: 800; letter-spacing: .22em; text-transform: uppercase; }
 .hero-section { background: var(--hero-bg); color: var(--hero-fg); }
 .hero-muted { color: var(--hero-muted); }
+.hero-tech-layout { position: relative; }
+.hero-tech-row { display: flex; align-items: center; justify-content: space-between; gap: .75rem; }
+.hero-tech-row-bottom { justify-content: flex-start; gap: .75rem; margin-top: 1.15rem; }
+.hero-tech-badge { display: inline-flex; align-items: center; border: 1px solid rgba(35,215,255,.22); border-radius: 999px; background: rgba(35,215,255,.06); color: var(--hero-muted); padding: .45rem .75rem; font-size: .68rem; font-weight: 700; letter-spacing: .08em; opacity: 0; transform: translateY(15px); box-shadow: 0 8px 24px rgba(16,10,42,.06); animation: hero-tech-in .7s var(--hero-tech-delay) cubic-bezier(.2,.7,.2,1) forwards, hero-tech-float 5s calc(var(--hero-tech-delay) + .8s) ease-in-out infinite; }
+.hero-tech-row-bottom .hero-tech-badge:nth-child(1) { border-color: rgba(245,211,95,.28); background: rgba(245,211,95,.07); }
+.hero-tech-row-bottom .hero-tech-badge:nth-child(2) { border-color: rgba(177,76,255,.24); background: rgba(177,76,255,.06); }
+@keyframes hero-tech-in { to { opacity: 1; transform: translateY(0); } }
+@keyframes hero-tech-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
 .site-header { background: var(--header-bg); }
 .site-header .nav-muted { color: var(--header-muted); }
 .project-section { background: var(--project-bg); color: var(--project-fg); }
@@ -37,3 +45,4 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 @keyframes float-slow { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } .reveal { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce), (hover: none) { .project-tilt, .project-tilt.is-visible { transform: none; } .project-tilt::after { display: none; } }
+@media (max-width: 639px) { .hero-tech-badge { padding: .4rem .6rem; font-size: .6rem; letter-spacing: .04em; } .hero-tech-secondary { display: none; } }
