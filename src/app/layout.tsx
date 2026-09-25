@@ -10,13 +10,13 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://abdelmounaim-elabia
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: { default: "Abdelmounaim Elabiade — Développeur Full Stack | Maroc", template: "%s | Abdelmounaim Elabiade" },
-  description: "Portfolio d'Abdelmounaim Elabiade, développeur Full Stack au Maroc spécialisé en Next.js, Laravel, WooCommerce et Shopify.",
+  description: "Découvrez le portfolio d'Abdelmounaim Elabiade, développeur Full Stack au Maroc. Création de sites web et d'applications modernes avec Next.js, Laravel, WooCommerce et Shopify.",
   keywords: ["Abdelmounaim Elabiade", "développeur full stack", "Maroc", "Next.js", "Laravel", "WooCommerce", "Shopify"],
   authors: [{ name: "Abdelmounaim Elabiade" }],
   creator: "Abdelmounaim Elabiade",
   alternates: { canonical: siteUrl, languages: { "fr-MA": siteUrl, "en": `${siteUrl}/?lang=en` } },
-  openGraph: { type: "website", locale: "fr_MA", url: siteUrl, title: "Abdelmounaim Elabiade — Développeur Full Stack | Maroc", description: "Développeur Full Stack au Maroc : Next.js, Laravel, WooCommerce et Shopify.", siteName: "Abdelmounaim Elabiade", images: [{ url: "/image/profile.png", width: 1200, height: 630, alt: "Abdelmounaim Elabiade, développeur Full Stack" }] },
-  twitter: { card: "summary_large_image", title: "Abdelmounaim Elabiade — Full Stack Developer", description: "Produits web modernes, du premier écran à la mise en production.", images: ["/image/profile.png"] },
+  openGraph: { type: "website", locale: "fr_MA", url: siteUrl, title: "Abdelmounaim Elabiade — Développeur Full Stack | Maroc", description: "Découvrez le portfolio d'Abdelmounaim Elabiade, développeur Full Stack au Maroc. Création de sites web et d'applications modernes avec Next.js, Laravel, WooCommerce et Shopify.", siteName: "Abdelmounaim Elabiade", images: [{ url: "/image/mounaim07.jpeg", alt: "Abdelmounaim Elabiade, développeur Full Stack" }] },
+  twitter: { card: "summary_large_image", title: "Abdelmounaim Elabiade — Full Stack Developer", description: "Découvrez le portfolio d'Abdelmounaim Elabiade, développeur Full Stack au Maroc.", images: ["/image/mounaim07.jpeg"] },
   icons: { icon: "/image/download.svg" }, robots: { index: true, follow: true },
 };
 

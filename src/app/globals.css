@@ -46,3 +46,39 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } .reveal { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce), (hover: none) { .project-tilt, .project-tilt.is-visible { transform: none; } .project-tilt::after { display: none; } }
 @media (max-width: 639px) { .hero-tech-badge { padding: .4rem .6rem; font-size: .6rem; letter-spacing: .04em; } .hero-tech-secondary { display: none; } }
+  :root {
+          --hero-gradient-stops: #0d092a 0%, #0a7d8f 25%, #7a3fc4 50%, #0d092a 75%;
+        }
+        .dark {
+          --hero-gradient-stops: #ffffff 0%, #72efff 25%, #b14cff 50%, #ffffff 75%;
+        }
+
+        @keyframes heroGradientShift {
+          0%   { background-position: 0% 50%; }
+          50%  { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+        @keyframes heroFloatY {
+          0%, 100% { transform: translateY(0px); }
+          50%      { transform: translateY(-6px); }
+        }
+        @keyframes heroFadeUp {
+          from { opacity: 0; transform: translateY(14px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+        .hero-gradient-title {
+          background: linear-gradient(90deg, var(--hero-gradient-stops));
+          background-size: 300% auto;
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+          animation: heroGradientShift 6s ease-in-out infinite;
+        }
+        .hero-magnetic-badge {
+          animation: heroFloatY 3.4s ease-in-out infinite;
+          transition: transform 0.18s ease-out;
+        }
+        .hero-cta-stagger {
+          opacity: 0;
+          animation: heroFadeUp 0.6s ease-out forwards;
+        }
