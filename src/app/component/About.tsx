@@ -11,7 +11,7 @@ export default function About() {
           <div className="absolute -bottom-5 -right-5 h-full w-full rounded-[1.5rem] border border-[#23d7ff]/35" />
           <div className="relative aspect-[4/5] overflow-hidden rounded-[1.5rem] bg-[#dce9df] dark:bg-[#21155a]">
             <Image
-              src="/image/Mounaimprfl.png"
+              src="/image/hero.png"
               alt="Abdelmounaim Elabiade, développeur full stack"
               fill
               priority
